@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>ScPoEconometrics</title>
+    <title>Econometrics</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Florian Oswald, Mylène Feuillade, Gustave Kenedi and Junnan He" />
+    <meta name="author" content="Florian Oswald" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/countdown/countdown.css" rel="stylesheet" />
@@ -17,16 +17,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# ScPoEconometrics
+# Econometrics
 ]
 .subtitle[
 ## Linear Regression Extensions
 ]
 .author[
-### Florian Oswald, Mylène Feuillade, Gustave Kenedi and Junnan He
+### Florian Oswald
 ]
 .date[
-### SciencesPo Paris </br> 2022-10-24
+### UniTo ESOMAS 2025-09-10
 ]
 
 ---
@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -80,7 +80,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -277,7 +277,7 @@ Several ways of doing this in `R`:
 
 .pull-left[
 
-```r
+``` r
 lm(y ~ x + I(x^2) + I(x^3), data)
 ```
 ]
@@ -286,7 +286,7 @@ lm(y ~ x + I(x^2) + I(x^3), data)
 
 .pull-right[
 
-```r
+``` r
 lm(y ~ poly(x, 3, raw = TRUE), data)
 ```
 ]
@@ -323,7 +323,7 @@ class:inverse
 
 # Task 1: Non-linear relationships
 
-<div class="countdown" id="timer_d4025d22" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_34f4ab23" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -347,7 +347,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -419,7 +419,7 @@ Running the regression for the `math` score (for all grades), we obtain:
 
 
 
-```r
+``` r
 lm(math ~ small+ experience + small*experience, star_df)
 ```
 
@@ -514,7 +514,7 @@ class:inverse
 
 # Task 2: Wages, education and gender in 1985
 
-<div class="countdown" id="timer_2251400e" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_616b6b1a" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -544,7 +544,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -614,7 +614,7 @@ class:inverse
 
 # Task 3: Standardized regression
 
-<div class="countdown" id="timer_aa93d53e" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_7d1f69cc" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -623,10 +623,10 @@ Let's go back our [grades](https://www.dropbox.com/s/wwp2cs9f0dubmhr/grade5.dta?
 
 
 ```
-##       (Intercept)          classize     disadvantaged school_enrollment 
-##      78.560725298       0.003320773      -0.389333008       0.000758258 
-##            female         religious 
-##       0.923710499       2.876146701
+##       (Intercept)          classize     disadvantaged 
+##      78.560725298       0.003320773      -0.389333008 
+## school_enrollment            female         religious 
+##       0.000758258       0.923710499       2.876146701
 ```
 
 1. Create a new variable `avgmath_stand` equal to the standardized math score. You can use the `scale()` function (combined with `mutate`) or do it by hand with base `R`.
@@ -680,7 +680,7 @@ Let's go back our [grades](https://www.dropbox.com/s/wwp2cs9f0dubmhr/grade5.dta?
 
 
 class: title-slide-final, middle
-background-image: url(../img/logo/ScPo-econ.png)
+background-image: url(../img/logo/esomas.png)
 background-size: 250px
 background-position: 9% 19%
 
@@ -690,8 +690,8 @@ background-position: 9% 19%
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
 | &lt;a href="mailto:florian.oswald@sciencespo.fr"&gt;.ScPored[&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;]               | florian.oswald@sciencespo.fr       |
-| &lt;a href="https://github.com/ScPoEcon/ScPoEconometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
-| &lt;a href="https://scpoecon.github.io/ScPoEconometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
+| &lt;a href="https://github.com/ScPoEcon/Econometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
+| &lt;a href="https://scpoecon.github.io/Econometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
 | &lt;a href="http://twitter.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                         |
 | &lt;a href="http://github.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                       |
 
@@ -776,10 +776,10 @@ This is because for small `\(|b_1|\times \Delta x\)`, `\((1 + \Delta x)^{b_1} \a
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
 <script src="../js/ru_xaringan.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

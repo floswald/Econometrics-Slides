@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>ScPoEconometrics</title>
+    <title>Econometrics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Florian Oswald, Gustave Kenedi, Mylène Feuillade and Junnan He" />
     <script src="libs/header-attrs/header-attrs.js"></script>
@@ -17,7 +17,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# ScPoEconometrics
+# Econometrics
 ]
 .subtitle[
 ## Multiple Regression Model
@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald, Gustave Kenedi, Mylène Feuillade and Junnan He
 ]
 .date[
-### SciencesPo Paris </br> 2022-10-02
+### UniTo ESOMAS 2025-09-10
 ]
 
 ---
@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -91,7 +91,7 @@ layout: true
 .pull-right[
 
 
-```r
+``` r
 lm(avgmath ~ classize, grades)
 ```
 
@@ -250,7 +250,7 @@ For now assume both the dependent variable `\((y_i)\)` and the independent varia
 * Very similar to simple linear regression:
 
 
-```r
+``` r
 lm(formula = dependent variable ~  independent variable 1 + independent variable 2 + ...,
    data = data.frame containing the data)
 ```
@@ -262,7 +262,7 @@ lm(formula = dependent variable ~  independent variable 1 + independent variable
 Let's estimate the model from earlier on by OLS: `\(\textrm{average math score}_i = b_0 + b_1 \textrm{class size}_i + b_2 \textrm{% disadvantaged}_i + e_i\)`
  
 
-```r
+``` r
 lm(avgmath ~ classize + disadvantaged, grades)
 ```
 
@@ -386,7 +386,7 @@ class:inverse
 
 # Task 1
 
-<div class="countdown" id="timer_09ab9df8" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_f1ff80a3" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -424,7 +424,7 @@ $$
 --
 
 
-```r
+``` r
 lm(avgmath ~ classize + religious, grades)
 ```
 
@@ -659,7 +659,7 @@ What if I create a `is_religious` and a `is_notreligious` variable and regress `
 What if I create a `is_religious` and a `is_notreligious` variable and regress `avgmath` on both (and `classize`)?
 
 
-```r
+``` r
 grades &lt;- grades %&gt;%
   mutate(is_religious = (religious == 1),
          is_notreligious = (religious == 0))
@@ -686,7 +686,7 @@ Only one of two has a coefficient! Why?
 
 .pull-left[
 
-```r
+``` r
 grades %&gt;% count(is_religious == 1 - is_notreligious)
 ```
 ]
@@ -730,7 +730,7 @@ class: inverse
 
 # Task 2: Dummy Variable Trap
 
-<div class="countdown" id="timer_88268092" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_0c26e149" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -861,7 +861,7 @@ class: inverse
 
 # Task 3: Recap
 
-<div class="countdown" id="timer_ad43683a" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_d30b200a" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -905,7 +905,7 @@ Let's use the *STAR* data (used in the previous task) to review the main concept
 ---
 
 class: title-slide-final, middle
-background-image: url(../img/logo/ScPo-econ.png)
+background-image: url(../img/logo/esomas.png)
 background-size: 250px
 background-position: 9% 19%
 
@@ -915,8 +915,8 @@ background-position: 9% 19%
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
 | &lt;a href="mailto:florian.oswald@sciencespo.fr"&gt;.ScPored[&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;]               | florian.oswald@sciencespo.fr       |
-| &lt;a href="https://github.com/ScPoEcon/ScPoEconometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
-| &lt;a href="https://scpoecon.github.io/ScPoEconometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
+| &lt;a href="https://github.com/ScPoEcon/Econometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
+| &lt;a href="https://scpoecon.github.io/Econometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
 | &lt;a href="http://twitter.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                         |
 | &lt;a href="http://github.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                       |
 
@@ -925,10 +925,10 @@ background-position: 9% 19%
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
 <script src="../js/ru_xaringan.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

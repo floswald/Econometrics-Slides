@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald
 ]
 .date[
-### Sciences Po Paris </br> 2024-01-23
+### Sciences Po Paris </br> 2025-09-10
 ]
 
 ---
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -52,7 +52,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -127,7 +127,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt;
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt;
 
 ---
 
@@ -151,7 +151,7 @@ layout: true
 
 .pull-left[
 
-```r
+``` r
 # load gapminder package
 library(gapminder)
 # load the dataset from the gapminder package
@@ -183,7 +183,7 @@ head(gapminder,n = 4)
 * Here we will only focus on the `dplyr` way:
 
 
-```r
+``` r
 # compute the required statistics
 gapminder_dplyr &lt;- gapminder %&gt;% 
   group_by(continent, year) %&gt;% 
@@ -193,7 +193,7 @@ gapminder_dplyr &lt;- gapminder %&gt;%
 ```
 
 
-```r
+``` r
 # show first 5 lines of the new data
 head(gapminder_dplyr, n = 5)
 ```
@@ -220,7 +220,7 @@ head(gapminder_dplyr, n = 5)
 * Nothing beats a picture, though:
 
 
-```r
+``` r
 ggplot(data = gapminder_dplyr, 
        mapping = aes(x = mean_lifeexp,
                      y = mean_gdppercap,
@@ -262,7 +262,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-&lt;div class="my-footer"&gt;&lt;img src="../img/logo/ScPo-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
 
 ---
 
@@ -302,7 +302,7 @@ layout: true
 
 * Some basic arithmetic first:
 
-```r
+``` r
 4 + 1
 ```
 
@@ -310,7 +310,7 @@ layout: true
 ## [1] 5
 ```
 
-```r
+``` r
 8 / 2
 ```
 
@@ -321,7 +321,7 @@ layout: true
 
 * Great! What about this?
 
-```r
+``` r
 2^3
 ```
 
@@ -329,7 +329,7 @@ layout: true
 ## [1] 8
 ```
 
-```r
+``` r
 # by the way: this is a comment! R therefore disregards it
 ```
 
@@ -339,7 +339,7 @@ class: inverse
 
 # Task 1
 
-<div class="countdown" id="timer_f263776a" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_d1d75f84" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -348,13 +348,13 @@ class: inverse
 
 1. Type the following code in your script and run it. To run the code press `Ctrl` or `Cmd` + `Enter` (you can either highlight the code or just put your cursor at the end of the line)
     
-    ```r
+    ``` r
     4 * 8
     ```
 
 1. Type the following code in your script and run it. What happens if you only run the first line of the code?
     
-    ```r
+    ``` r
     x = 5 # equivalently x &lt;- 5
     x
     ```
@@ -369,7 +369,7 @@ Congratulations, you have created your first `R` "object"! Everything is an obje
 .pull-left[
 `R` built-in `help`:
 
-```r
+``` r
 ?log #? in front of function
 help(lm)   # help() is equivalent
 ??plot  # get all help on keyword "plot"
@@ -397,13 +397,13 @@ In practice:
 
 * Installing packages is easy! Just use the `install.packages` function:
     
-    ```r
+    ``` r
     install.packages("ggplot2")
     ```
 
 * To *use* the contents of a packge, we must load it from our library using `library`:
     
-    ```r
+    ``` r
     library(ggplot2)
     ```
 
@@ -416,7 +416,7 @@ In practice:
 .pull-left[
 * The `c` function creates vectors, i.e. *one-dimensional arrays*.
     
-    ```r
+    ``` r
     c(1, 3, 5, 7, 8, 9)
     ```
     
@@ -426,7 +426,7 @@ In practice:
     
 * Coercion to unique types:
     
-    ```r
+    ``` r
     (v &lt;- c(42, "Statistics", TRUE))
     ```
     
@@ -441,7 +441,7 @@ In practice:
 
 * Creating a *range*
     
-    ```r
+    ``` r
     1:10
     ```
     
@@ -451,7 +451,7 @@ In practice:
 
 * get vector elements with square bracket operator `[index]`:
     
-    ```r
+    ``` r
     v[c(1,3)]
     ```
     
@@ -467,7 +467,7 @@ In practice:
 `data.frame`s represent **tabular data**. Like spreadsheets.
 
 
-```r
+``` r
 example_data = data.frame(x = c(1, 3, 5, 7),
                           y = c(rep("Hello", 3), "Goodbye"),
                           z = c("one", 2, "three", 4))
@@ -491,7 +491,7 @@ example_data
 class: inverse
 # Task 2
 
-<div class="countdown" id="timer_75e71ef1" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_925dd3eb" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -504,13 +504,13 @@ class: inverse
 
 1. Ensure that `brexit` is a data.frame by running:
     
-    ```r
+    ``` r
     class(brexit) # check class
     ```
 
 1. Find out what variables are contained in `brexit` by running:
     
-    ```r
+    ``` r
     names(brexit) # obtain variable names
     ```
 
@@ -526,7 +526,7 @@ class: inverse
 
 Useful functions to describe a dataframe:
 
-```r
+``` r
 str(brexit) # `str` describes structure of any R object
 ```
 
@@ -547,19 +547,20 @@ str(brexit) # `str` describes structure of any R object
 --
 
 
-```r
+``` r
 names(brexit) # column names
 ```
 
 ```
-##  [1] "rownames"   "startdate"  "enddate"    "pollster"   "poll_type" 
-##  [6] "samplesize" "remain"     "leave"      "undecided"  "spread"
+##  [1] "rownames"   "startdate"  "enddate"    "pollster"  
+##  [5] "poll_type"  "samplesize" "remain"     "leave"     
+##  [9] "undecided"  "spread"
 ```
 
 --
 
 
-```r
+``` r
 nrow(brexit) # number of rows
 ```
 
@@ -570,7 +571,7 @@ nrow(brexit) # number of rows
 --
 
 
-```r
+``` r
 ncol(brexit) # number of columns
 ```
 
@@ -585,7 +586,7 @@ ncol(brexit) # number of columns
     
 * To extract one column **as a vector** we can use the `$` operator (as in `brexit$state`), or the square bracket operator `[which_index]` with name or position index:
     
-    ```r
+    ``` r
     first5 &lt;- brexit[1:5, ]  # take first 5 states only
     first5$pollster  # extract with $ operator
     ```
@@ -594,7 +595,7 @@ ncol(brexit) # number of columns
     ## [1] "YouGov"     "Populus"    "YouGov"     "Ipsos MORI" "Opinium"
     ```
     
-    ```r
+    ``` r
     first5[ ,"pollster"]  # extract with column name
     ```
     
@@ -602,7 +603,7 @@ ncol(brexit) # number of columns
     ## [1] "YouGov"     "Populus"    "YouGov"     "Ipsos MORI" "Opinium"
     ```
     
-    ```r
+    ``` r
     first5[ ,2] # get second column
     ```
     
@@ -615,7 +616,7 @@ ncol(brexit) # number of columns
 .pull-left[
 * Check `class` of an object:
     
-    ```r
+    ``` r
     class(brexit)
     ```
     
@@ -629,7 +630,7 @@ ncol(brexit) # number of columns
 .pull-right[
 * `typeof` gives the R-internal data type:
     
-    ```r
+    ``` r
     typeof(brexit)
     ```
     
@@ -644,7 +645,7 @@ ncol(brexit) # number of columns
 
 * Subsetting a data.frame: `brexit[row condition, column number]` or `brexit[row condition, "column name"]`
     
-    ```r
+    ``` r
     # Only keep polls with more than 1000 observations and keep 2 columns
     brexit[brexit$samplesize &gt; 3900, c("remain", "leave")]
     ```
@@ -656,7 +657,7 @@ ncol(brexit) # number of columns
     ## 95   0.48  0.45
     ```
     
-    ```r
+    ``` r
     # Only keep polls from YouGov and Opinium
     brexit[brexit$pollster %in% c("YouGov", "Opinium") &amp; brexit$samplesize &gt; 3000, c("remain", "leave", "pollster")]
     ```
@@ -680,7 +681,7 @@ class: inverse
 
 # Task 3
 
-<div class="countdown" id="timer_d6eb272e" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_457c98b8" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -694,7 +695,7 @@ class: inverse
 
 1. Create a `remainers` variable equal to the number of total remain-voters in each poll by running the following code.
     
-    ```r
+    ``` r
     brexit$remainers = brexit$remain * brexit$samplesize
     ```
 
@@ -703,7 +704,7 @@ Congratulations, you've created your first variable! Click on the `brexit` objec
 ---
 
 class: title-slide-final, middle
-background-image: url(../img/logo/ScPo-econ.png)
+background-image: url(../img/logo/esomas.png)
 background-size: 250px
 background-position: 9% 19%
 
@@ -714,8 +715,8 @@ background-position: 9% 19%
 
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| &lt;a href="https://github.com/ScPoEcon/ScPoEconometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
-| &lt;a href="https://scpoecon.github.io/ScPoEconometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
+| &lt;a href="https://github.com/ScPoEcon/Econometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
+| &lt;a href="https://scpoecon.github.io/Econometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
 | &lt;a href="http://twitter.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                         |
 | &lt;a href="http://github.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                       |
 
@@ -725,10 +726,10 @@ background-position: 9% 19%
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="../js/ru_xaringan.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

@@ -2,7 +2,7 @@
 title: "ScPoProgramming"
 subtitle: "`R` Tidyverse"
 author: "Florian Oswald"
-date: "SciencesPo Paris </br> `r Sys.Date()`"
+date: "UniTo ESOMAS `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
@@ -20,7 +20,7 @@ output:
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -93,7 +93,7 @@ class: title-slide-section-red, middle
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -206,7 +206,7 @@ str(polls_us_election_2016)
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -332,7 +332,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -424,7 +424,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -506,7 +506,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -570,7 +570,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -693,7 +693,7 @@ polls_us_election_2016 %>%
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # Chaining ⛓ Commands Together
 
@@ -856,7 +856,7 @@ polls_us_election_2016$samplesize |> mean(na.rm = T)
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -934,7 +934,7 @@ class: title-slide-section-red, middle
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1052,7 +1052,7 @@ ggplot(data)
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1106,7 +1106,7 @@ aes(
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1189,7 +1189,7 @@ Just start typing `geom_` in `RStudio` to see all the options
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # (Y)Our first plot!
 ---
@@ -1333,7 +1333,7 @@ g
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1376,7 +1376,7 @@ g + facet_grid(~ continent)
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1402,7 +1402,7 @@ g + labs(x = "Year", y = "Average Population", color = "Continent")
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1459,7 +1459,7 @@ g + scale_x_continuous(breaks = seq(1950, 2020, 10))
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1475,7 +1475,7 @@ layout: true
 
 layout:true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1544,7 +1544,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1804,7 +1804,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div>
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div>
 
 
 ---
@@ -1924,7 +1924,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div>
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div>
 
 
 
@@ -2133,7 +2133,7 @@ Other useful items include: pipes (`%>%`), grouping (`group_by`), joining functi
 ---
 
 class: title-slide-final, middle
-background-image: url(../img/logo/ScPo-econ.png)
+background-image: url(../img/logo/esomas.png)
 background-size: 250px
 background-position: 9% 19%
 
