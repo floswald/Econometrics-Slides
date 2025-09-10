@@ -5,6 +5,9 @@ Updated: 03/06/2018
 
 Modified by Florian Oswald for ScPo
 18/08/2019
+
+Modified by Florian Oswald for Unito
+5/9/2025
 */
 
 /* Package defaults that we slightly tweak */
@@ -158,9 +161,9 @@ blockquote {
 
 /* changing background image to ScPo*/
 .title-slide {
-  background-image: url("../img/logo/ScPo-econ.png");
-  background-position: 9% 30%;
-  background-size: 300px;
+  background-image: url("../img/logo/esomas.png");
+  background-position: 60% 50%;
+  background-size: 400px;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
 }
@@ -168,7 +171,7 @@ blockquote {
 /* H1 fonts */
 .title-slide h1 {
   color: #515151;
-  padding-top: 250px;
+  padding-top: 0px;
   font-weight: normal;
   font-size: 45px;
   line-height: 0.05;

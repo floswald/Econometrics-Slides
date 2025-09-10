@@ -1,8 +1,8 @@
 ---
-title: "ScPoEconometrics"
+title: "Econometrics"
 subtitle: "Intro To Causality"
-author: "Mylène Feuillade, Gustave Kenedi, Florian Oswald and Junnan He"
-date: "SciencesPo Paris </br> `r Sys.Date()`"
+author: "Florian Oswald"
+date: "UniTo ESOMAS </br> `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
@@ -20,7 +20,7 @@ output:
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -65,7 +65,7 @@ countdown(
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -254,7 +254,7 @@ class: title-slide-section-red, middle
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -639,7 +639,7 @@ class: title-slide-section-red, middle
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1128,7 +1128,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 

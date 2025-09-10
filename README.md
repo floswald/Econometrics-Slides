@@ -1,12 +1,12 @@
-# ScPoEconometrics Slide Host
+# Econometrics Slide Host
 
-* Here you can look at the slide for the [ScPoEconometrics](https://github.com/ScPoEcon/ScPoEconometrics) course.
+* Here you can look at the slide for the [Econometrics](https://github.com/ScPoEcon/ScPoEconometrics) course.
 * This repo is frequently updated, so check back often.
 
 
 ## Slides
 
-| Lecture | HTML | PDF | Tasks |
+| Lecture | HTML | PDF | Tasks |    
 |---------|:----:|:---:|-------|
 | Lecture 1: Introduction | [HTML](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro/chapter_intro.html) | [PDF](https://rawcdn.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro/chapter_intro.pdf) | [HTML](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro/tasks/intro_tasks.html) [.Rmd](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro/tasks/intro_tasks.Rmd) |
 | Lectures 2/3: Tidying, Visualising and Summarising Data | [HTML](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy/chapter_tidy.html) | [PDF](https://rawcdn.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy/chapter_tidy.pdf) | [HTML](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy/tasks/tidy_tasks.html) [.Rmd](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy/tasks/tidy_tasks.Rmd) |
@@ -42,3 +42,19 @@ You can copy and adapt this material for your purposes, as long as you give appr
 * To print slides as PDF, do 
 ```decktape chapter1.html chapter1.pdf --chrome-arg=--disable-web-security```
 using the awesome [decktape](https://github.com/astefanutti/decktape)
+
+
+## For teacher of chapter 4
+
+Core concepts for chapters 4 and following:
+
+1. Data from Angrist and Lavy (slide 4 of ch 4 slides)
+2. draw a line through scatterplot. what kind of line? Relates to section 4.4 of SW.
+3. Why do we minimise *squared* residuals?
+4. How do we compute the estimator? show app and explain what computer does. refer to appendix and FOCs.
+5. run regression of avgmath score on class size in R and say how to make predictions
+6. What is R2
+7. please stick to notation: b is the estimator, \beta is the population parameter.
+
+move directly to "Introduction to Causality" after that. This can/should be extended with chapter 13 SW
+

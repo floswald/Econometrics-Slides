@@ -1,0 +1,705 @@
+---
+title: "Econometrics"
+subtitle: "Probability"
+author: "Florian Oswald"
+date: "UniTo ESOMAS </br> `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    # chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
+    lib_dir: libs
+    css: [default, "../css/scpo.css", "../css/scpo-fonts.css"]
+    nature:
+      beforeInit: ["../js/ru_xaringan.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "../libs/partials/header.html"
+---
+
+layout: true
+
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+---
+
+```{r setup, include = FALSE, warning = FALSE, message = FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  cache = TRUE,
+  fig.align = "center"
+  #fig.width = 11,
+  #fig.height = 5
+)
+
+# Load packages
+library(tidyverse)
+library(pander)
+library(ggthemes)
+library(gapminder)
+library(countdown)
+library(xaringanExtra)
+
+# countdown style
+countdown(
+  color_border              = "#d90502",
+  color_text                = "black",
+  color_running_background  = "#d90502",
+  color_running_text        = "white",
+  color_finished_background = "white",
+  color_finished_text       = "#d90502",
+  color_finished_border     = "#d90502"
+)
+```
+
+
+# Probability
+
+
+1. Probabilities and RVs
+2. PDFs and CDFs of discrete
+3. PDFs and CDFs of cont
+4. E, Var
+5. funcs of RVs
+6. standardizing RVs
+7. joint and marginal dists
+8. conditional dists, independence, covariance, corr
+9. LIE
+10. correlation and conditional mean
+11. KC 2.3
+12. random sampling and distributions of resulting statistics
+
+
+---
+
+# Probabilities
+
+*Probability* is a function that assigns a value in $[0,1]$ to a *set* (representing *events*).
+
+Consider a fair 6-sided dice.
+
+* Outcome space: $\Omega = \{1,2,3,4,5,6\}$
+* Event: a partition of $\Omega$.
+
+--
+
+For example, the events A ("the outcome is even") and B ("the outcome is odd") are:
+
+$$
+\begin{align}
+A &= \{2,4,6\},\\
+B &= \{1,3,5\}.
+\end{align}
+$$
+Having a *fair* dice means that
+
+$$
+\Pr(1) = \dots = \Pr(6) = \frac{1}{6}
+$$
+
+---
+
+# Discrete Random Variables
+
+A *Discrete Random Variable* is a function mapping outcomes to a measurements.
+
+* For example, we might call $X$ the number we obtain from throwing the dice once.
+
+* For example, we might call $Y$ the 2 numbers we obtain from throwing the dice two times. 
+
+
+---
+class: inverse
+
+# Gambler's Ruin
+
+The dealer tosses a fair coin. If it comes up tails (`T`) you win, if it's heads (`H`)you loose. 
+
+Suppose we've seen the following sequence of tosses so far, where `0` means heads, and `1` means tails:
+
+```
+outcome:  H   H   H   H   H   H   H   H   H   H   ?
+toss num: 1.  2.  3.  4.  5.  6.  7.  8.  9.  10. 11.  
+```
+
+You have lost 10 times in a row now. Does this increase the probability that you will win the next round? 
+
+
+---
+
+## Gambler's Ruin
+
+The probability of hitting 11 `H` in a row is
+
+$$
+\Pr(\text{11 Heads in a Row}) = \frac{1}{2^{11}} = 0.00048 = 0.05\%
+$$
+--
+
+Ok, but I already had 10 `H`! What's the next toss likely going to be given that miserable history?
+
+$$
+\Pr(\text{toss 11 is Heads} | 10 \text{ Heads before})
+$$
+Let's calculate that probability!
+
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# Probability Distributions
+
+---
+
+layout: true
+
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+
+
+---
+
+## PDFs and CDFs of discrete RVs
+
+* The PDF of a discrete RV is a table listing each outcome and the associated probability of observing it. (sometimes called probability *mass* function)
+* The CDF is the probability that a given RV takes on a value less than or equal a certain value. 
+
+### For our 6-sided fair dice
+
+```{r,echo = FALSE}
+num_pdf = data.frame(outcome = 1:6, pdf= 1/6, cdf = cumsum(rep(1/6,6)))
+text_pdf = data.frame(outcome = 1:6, pdf= "1/6", cdf = paste0(1:6,"/6"))
+text_pdf
+```
+
+---
+
+## PDFs and CDFs of discrete RVs
+
+* The PDF of a discrete RV is a table listing each outcome and the associated probability of observing it. (sometimes called probability *mass* function)
+* The CDF is the probability that a given RV takes on a value less than or equal a certain value. 
+
+### For our 6-sided fair dice
+
+.pull-left[
+
+```{r,echo = FALSE,fig.height=4}
+plot(num_pdf$pdf,
+     xlab = "Outcomes",
+     ylab="Probability",
+     pch=20) 
+```
+]
+
+.pull-right[
+```{r,echo = FALSE,fig.height=4}
+plot(num_pdf$cdf,
+     xlab = "Outcomes",
+     ylab="Cumulative Probability",
+     pch=20) 
+```
+]
+
+
+---
+
+## Bernoulli Distribution
+
+* A special discrete RV with 2 outcomes: `0` and `1`, where event `1` ("success") occurs with probability $p$.
+
+For example:
+
+* Tomorrow it will rain with probability $p$ (it will *not* rain with $1-p$).
+
+--
+
+What kind of RV is flipping a *fair* coin? What about an *unfair* coin?
+
+---
+
+## PDFs and CDFs of continuous Variables
+
+* slightly more complicated because we need calculus and integration.
+* The basic idea is the same!
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# Expected Value and Variance
+
+---
+
+layout: true
+
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+
+
+---
+
+## Expected Value and Variance
+
+We write
+
+$$
+E(Y) = y_1 p_1 + \dots + y_n p_n
+$$
+
+For example for our dice example, where $X$ is the result of throwing the dice: 
+
+$$
+\begin{align}
+E(X) &= 1 \times \Pr(1) + 2 \times \Pr(2) + \dots + 6 \times \Pr(6) \\
+     &=
+\end{align}
+$$
+**Everybody calculate this result now!**
+
+---
+
+## Expected Value and Variance
+
+We write
+
+$$
+E(Y) = y_1 p_1 + \dots + y_n p_n
+$$
+```{r, echo = FALSE}
+x = 1:6
+pr = 1/6
+EX = sum(x * pr)
+```
+
+For example for our dice example, where $X$ is the result of throwing the dice: 
+
+$$
+\begin{align}
+E(X) &= 1 \times \Pr(1) + 2 \times \Pr(2) + \dots + 6 \times \Pr(6) \\
+     &= 1 \times \frac{1}{6} + 2 \times \frac{1}{6} + \dots + 6 \times \frac{1}{6} \\
+     &= `r EX` \\
+\end{align}
+$$
+* Given the weight is constant ($1/6$), this is identical to the arithmetic mean of numbers 1,...6:
+
+```{r}
+mean(1:6)
+```
+
+---
+
+## $E(X)$ is a Theoretical Concept
+
+* $E(X)$ hinges on the fact that we know the precise probabilities of each outcome.
+* If we had a huge number of dice throws, we could form an *estimate* of $E(X)$, based on those data (more on that later)
+
+```{r}
+set.seed(12345)  # to ensure reproducibility
+x = sample(1:6, size = 10000, replace = TRUE)
+estimate = mean(x)
+estimate
+```
+---
+
+# Central Tendency - Mean and Median
+
+
+.pull-left[
+`mean(x)`: the average of all values in `x`.
+$$\bar{x} = \frac{1}{N}\sum_{i=1}^N x_i$$
+
+```{r}
+x <- c(1,2,2,2,2,100)
+mean(x)
+mean(x) == sum(x) / length(x)
+```
+]
+
+--
+
+.pull-right[
+`median`: the value $x_j$ below and above which 50% of the values in `x` lie. $m$ is the median if
+    $$\Pr(X \leq m) \geq 0.5 \text{ and } \Pr(X \geq m) \geq 0.5$$
+    
+The median is robust against *outliers*.
+
+```{r}
+median(x)
+```
+]
+
+---
+
+## Quick Review
+
+1. EV of a bernoulli
+2. Continuous RV
+
+---
+
+## Variance
+
+* A measure of *spread* of a distribution.
+* The definition of *variance* is
+
+$$
+var(Y) = E[(Y-\mu_Y)^2]
+$$
+
+if $Y$ is discrete,
+
+$$
+var(Y) = \sum_{i=1}^N (y_i-\mu_Y)^2 \times p_i.
+$$
+
+## Variance
+
+.pull-left[
+
+Consider two `normal distributions` with equal mean at `0`:
+]
+
+--
+
+.pull-right[
+```{r,echo = FALSE,fig.height=4,message = FALSE,warning = FALSE}
+ggplot(data = data.frame(x = c(-5, 5)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1), aes(color = "1"), size = 2) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 2), aes(color = "4"), size = 2) +
+  ylab(NULL) +
+  scale_y_continuous(breaks = NULL) +
+  scale_color_manual("Variance:", values = c("#d90502","#DE9854")) +
+  theme_bw() +
+  theme(legend.position = c(0.02,0.98),
+        legend.justification = c(0,1),
+        text = element_text(size=20))
+```
+
+Compute with:
+```{r,eval = FALSE}
+var(x)
+```
+]
+
+---
+
+## Example of other Spread Measures
+
+.pull-left[
+
+```{r,fig.width=5, fig.height=3}
+# % catholic in 47 french-speaking
+# swiss cantons in 1888
+plot(swiss$Catholic,rep(1,nrow(swiss)),pch = 3,cex = 2,
+     xlab = "% Catholic",yaxt = "n",ylab = "") 
+```
+]
+
+.pull-right[
+How do the values in column `Catholic` *vary*?
+
+| Measure            | `R`              | Result             |
+|:---------:|:-------------------:|:---------------------:|
+| Variance           | `var(swiss$Catholic)`   | `r round(var(swiss$Catholic),2)`   |
+| Standard Deviation | `sd(swiss$Catholic)`    | `r round(sd(swiss$Catholic),2)`    |
+| IQR                | `IQR(swiss$Catholic)`   | `r round(IQR(swiss$Catholic),2)`   |
+| Minimum            | `min(swiss$Catholic)`   | `r round(min(swiss$Catholic),2)`   |
+| Maximum            | `max(swiss$Catholic)`   | `r round(max(swiss$Catholic),2)`   |
+| Range              | `range(swiss$Catholic)` | `r round(range(swiss$Catholic),2)` |
+
+]
+
+---
+
+# Computing Variance by hand
+
+1. Compute the variance of the our 6-sided dice!
+2. compute the variance of $X \sim \text{Bernoulli}(p)$!
+
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# 2 Random Variables
+
+---
+
+layout: true
+
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+
+
+---
+
+# Two Random Variables
+
+```{r x-y-corr,echo=FALSE,message=FALSE,warning=FALSE}
+library(mvtnorm)
+set.seed(10)
+cor = 0.9
+sig = matrix(c(1,cor,cor,1),c(2,2))
+ndat = data.frame(rmvnorm(n=300,sigma = sig))
+x = ndat$X1
+y = ndat$X2
+par(pty="s")
+plot(x ~ y, xlab="x",ylab="y")
+```
+
+Taking as example the data in this plot, the concepts *covariance* and *correlation* relate to the following type of question:
+
+
+# missing
+
+joint and marginal dists
+8. conditional dists, independence, covariance, corr
+9. LIE
+10. correlation and conditional mean
+
+create/get a table and illustrate
+
+---
+
+# Tabulating Data
+
+```{r, echo = FALSE, eval = TRUE}
+gapminder <- dslabs::gapminder
+```
+
+`table(x)` is a useful function that counts the occurence of each unique value in `x`:
+```{r}
+table(gapminder$continent)
+```
+
+--
+
+The same can be achieved using the `count` function (from `dplyr`)
+```{r}
+gapminder %>% count(continent)
+```
+
+---
+
+# Tabulating Data
+
+
+Given two variables, `table` produces a contingency table:
+```{r}
+gapminder_new <- gapminder %>%
+  filter(year == 2015) %>%
+  mutate(fertility_above_2 = (fertility > 2.1)) # dummy variable for fertility rate above replacement rate
+```
+
+.pull-left[
+```{r}
+table(gapminder_new$fertility_above_2)
+```
+]
+
+--
+
+.pull-right[
+```{r}
+table(gapminder_new$fertility_above_2,gapminder_new$continent)
+```
+]
+
+--
+
+With `prop.table`, we can get proportions:
+```{r,eval=FALSE}
+# proportions by row
+prop.table(table(gapminder_new$fertility_above_2,gapminder_new$continent), margin = 1)
+# proportions by column
+prop.table(table(gapminder_new$fertility_above_2,gapminder_new$continent), margin = 2) 
+```
+
+* `r emo::ji("warning")` To obtain `table`s or `crosstable`s with `NA`s, use the `useNA = "always"` or `useNA = "ifany"`
+
+---
+
+# Tabulating Data
+
+Again the `count` function can get you there as well:
+
+```{r}
+gapminder_new %>%
+  count(continent, fertility_above_2)
+```
+
+Note that `count` will display `NA`s only if there are some.
+
+```{r}
+gapminder_new %>% filter(is.na(fertility)) %>% select(country)
+```
+
+
+
+---
+
+# Joint Distributions
+
+```{r,echo = FALSE}
+gn = gapminder_new %>% filter(country != "Greenland")
+abs_tab = table(gn$continent, gn$fertility_above_2)
+prop_tab = round(prop.table(abs_tab),2)
+```
+
+.pull-left[
+```{r}
+abs_tab
+```
+There are `r sum(abs_tab)` countries.
+]
+
+.pull-right[
+```{r}
+prop_tab
+```
+What *fraction* of countries is in each bin?
+
+* 👉The *joint distribution*.
+* $\Pr(X,Y)$ where X = `continent` and Y = `fertility_above_2`
+]
+
+--
+
+👉 The *conditional distribution* is $\Pr(X=x|Y=y) = \frac{\Pr(X=x,Y=y)}{\Pr(Y=y)}$
+
+---
+
+class: inverse
+
+# Computing Conditional Distributions
+
+`r countdown(minutes = 5, top = 0)`
+
+.pull-left[
+```{r}
+prop_tab
+```
+]
+
+.pull-right[
+1. Compute the Distribution of countries with low fertility?
+2. Compute the Distribution of countries in Asia?
+]
+
+```{r}
+prop_tab[,1] / sum(prop_tab[,1])
+```
+
+---
+
+# How are x and y related? Covariance and Correlation
+
+---
+
+# Covariance
+
+* The covariance is a measure of __joint variability__ of two variables.
+    $$Cov(x,y) = \frac{1}{N} \sum_{i=1}^N(x_i-\bar{x})(y_i-\bar{y})$$
+
+--
+
+* The `cov` function computes the covariance:
+
+```{r}
+cov(gapminder_new$fertility,gapminder_new$infant_mortality, use = "complete.obs")
+```
+
+--
+
+* Difficult to interpret because sensitive to the variables' dispersions from the mean
+
+---
+
+# Correlation
+
+* The correlation is a measure of the strength of the __linear association__ between two variables.
+    $$Cor(x,y) = \frac{Cov(x,y)}{\sqrt{Var(x)}\sqrt{Var(y)}}$$
+
+--
+
+* The `cor` function computes the correlation:
+
+```{r}
+cor(gapminder_new$fertility,gapminder_new$infant_mortality, use = "complete.obs")
+```
+
+---
+
+# Correlation
+
+* **Correlation is always between -1 and 1!**
+
+--
+
+```{r, echo = F, out.width = "100%"}
+# knitr::include_graphics("chapter_tidy_files/figure-html/correlation.svg")
+```
+
+.footnote[
+*Source: [mathisfun](https://www.mathsisfun.com/data/correlation.html)*
+]
+
+---
+
+# Correlation
+
+* [App](https://gustavek.shinyapps.io/corr_continuous/)
+
+```{r, echo = F}
+knitr::include_url("https://gustavek.shinyapps.io/corr_continuous/")
+```
+
+---
+
+class: inverse
+
+# Task 4: Summarising data
+
+`r countdown(minutes = 10, top = 0)`
+
+1. Compute the mean of GDP in 2011 and assign to object `mean`. You should exclude missing values. (*Hint: read the help for `mean` to remove `NA`s*).
+
+1. Compute the median of GDP in 2011 and assign to object `median`. Again, you should exclude missing values. Is it greater or smaller than the average?
+
+1. Create a density plot of GDP in 2011 using `geom_density`. A density plot is a way of representing the distribution of a numeric variable. Add the following code to your plot to show the median and mean as vertical lines. What do you observe?
+`geom_vline(xintercept = as.numeric(mean), colour = "red") +` <br>
+    `geom_vline(xintercept = as.numeric(median), colour = "orange")`
+
+1. Compute the correlation between fertility and infant mortality in 2015. To drop `NA`s in either variable set the argument `use` to "pairwise.complete.obs" in your `cor()` function. Is this correlation consistent with the graph you produced in Task 3?
+
+
+---
+
+class: title-slide-final, middle
+background-image: url(../img/logo/esomas.png)
+background-size: 250px
+background-position: 9% 19%
+
+# That's it!
+
+
+
+
+|                                                                                                            |                                   |
+| :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
+| <a href="https://github.com/ScPoEcon/ScPoEconometrics-Slides">.ScPored[<i class="fa fa-link fa-fw"></i>] | Slides |
+| <a href="https://scpoecon.github.io/ScPoEconometrics">.ScPored[<i class="fa fa-link fa-fw"></i>] | Book |
+| <a href="http://twitter.com/ScPoEcon">.ScPored[<i class="fa fa-twitter fa-fw"></i>]                          | @ScPoEcon                         |
+| <a href="http://github.com/ScPoEcon">.ScPored[<i class="fa fa-github fa-fw"></i>]                          | @ScPoEcon                       |
+
+```{r makepdf, echo=FALSE,eval=FALSE}
+system("decktape chapter1.html chapter1.pdf --chrome-arg=--disable-web-security")
+```

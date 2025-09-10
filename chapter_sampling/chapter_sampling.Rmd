@@ -1,8 +1,8 @@
 ---
-title: "ScPoEconometrics"
+title: "Econometrics"
 subtitle: "Sampling"
-author: "Florian Oswald, Mylène Feuillade, Gustave Kenedi and Junnan He"
-date: "SciencesPo Paris </br> `r Sys.Date()`"
+author: "Florian Oswald"
+date: "UniTo ESOMAS </br> `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -19,7 +19,7 @@ output:
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -70,7 +70,7 @@ set.seed(1234)
 
 ---
 
-# What's the proportion of green pasta?
+# What's the proportion of green noodles?
 
 .center[
 ```{r, echo = FALSE, out.width = "600px"}
@@ -80,14 +80,14 @@ knitr::include_graphics("../img/photos/pasta/pasta_bowl.JPG")
 
 --
 
-We could count every green pasta but that would be tedious! `r emo::ji("weary")` What else could we do?
+We could count every green noodle but that would be tedious! `r emo::ji("weary")` What else could we do?
 
 ---
 
 # Sampling
 
 .pull-left[
-* Let's take a sample of 20 pasta.
+* Let's take a sample of 20 noodles.
 
 * We made sure to select them at **random**.
 
@@ -99,7 +99,7 @@ Green   |  14        |  `r format(signif(14/20,2), nsmall = 2)`
 Red   |  5     |   `r format(round(5/20,2), nsmall = 2)`
 Yellow   |  1    |     `r format(round(1/20,2), nsmall = 2)`
 
-* `r format(signif(14/20,2), nsmall = 2)` can be thought of as our guess of the proportion of green pasta in the entire bowl.
+* `r format(signif(14/20,2), nsmall = 2)` can be thought of as our guess of the proportion of green noodles in the entire bowl.
 ]
 
 .pull-right[
@@ -111,7 +111,7 @@ Yellow   |  1    |     `r format(round(1/20,2), nsmall = 2)`
 # Sampling Variation
 
 
-* What would happen if we took a *new* sample (putting the 20 previous pasta back in the bowl)? Would we also get 14 *greens* as before?
+* What would happen if we took a *new* sample (putting the 20 previous noodles back in the bowl)? Would we also get 14 *greens* as before?
 
 --
 
@@ -129,7 +129,7 @@ Yellow   |  1    |     `r format(round(1/20,2), nsmall = 2)`
 
 # Taking 18 Samples (One per Student)
 
-* Because we don't have pasta with us in class, we drew 18 samples of 20 pasta (with replacement) at home.
+* Because we don't have noodles with us in class, we drew 18 samples of 20 noodles (with replacement) at home.
 
 --
 
@@ -144,9 +144,9 @@ Yellow   |  1    |     `r format(round(1/20,2), nsmall = 2)`
 
 # Taking 18 Samples (One per Student)
 
-* Because we don't have pasta with us in class, we drew 18 samples of 20 pasta (with replacement) at home.
+* Because we don't have noodles with us in class, we drew 18 samples of 20 noodles (with replacement) at home.
 
-* For each sample, we computed the share of green pasta.
+* For each sample, we computed the share of green noodles.
 
 .pull-left[
 Sample # | Count | Proportion
@@ -184,7 +184,7 @@ class: inverse
 
 `r countdown(minutes = 5, top = 0)`
 
-1. Create a data.frame containing the proportions of green pasta from the previous slide. Name it `pasta` and name the variable containing the proportions `prop_green`. (Hint: to create a data.frame you need to use the `data.frame()` function.)
+1. Create a data.frame containing the proportions of green noodles from the previous slide. Name it `pasta` and name the variable containing the proportions `prop_green`. (Hint: to create a data.frame you need to use the `data.frame()` function.)
 The proportions are as follows: `(0.7,0.7,0.5,0.5,0.3,0.5,0.4,0.45,0.55,0.4,0.35,0.45,0.45,0.7,0.55,0.5,0.35,0.65)`
 
 1. Create a histogram of these proportions using `ggplot2`. Use these parameters in `geom_histogram()`: `boundary = 0.325, binwidth = 0.05`.
@@ -240,7 +240,7 @@ pasta_samples %>%
   ggplot(aes(x = prop_green)) +
   geom_histogram(boundary = 0.325, binwidth = 0.05, col = "white", fill = "darkgreen") +
   labs(
-    x = "Proportion of green pasta",
+    x = "Proportion of green noodles",
     y = "Frequency"
   ) +
   xlim(0.25, 0.75) +
@@ -258,7 +258,7 @@ pasta_samples %>%
 
 --
 
-* *Objective*: know the proportion of green pasta
+* *Objective*: know the proportion of green noodles
 
 --
 
@@ -268,8 +268,8 @@ pasta_samples %>%
   
 --
   
-  1. **Sampling**: extract a *sample* of 20 pasta from the bowl to obtain an ***estimate***.  
-  Out first ***estimate*** of the proportion of green pasta was 0.70, but it was actually larger than most other ***estimates***.
+  1. **Sampling**: extract a *sample* of 20 noodles from the bowl to obtain an ***estimate***.  
+  Out first ***estimate*** of the proportion of green noodles was 0.70, but it was actually larger than most other ***estimates***.
   
 --
 
@@ -280,9 +280,9 @@ pasta_samples %>%
 # Taking Virtual (not Real) Samples
 
 .pull-left[
-* We counted the exact number of green, red and yellow pasta in the bowl `r emo::ji("monocle")` `#confinement`
+* We counted the exact number of green, red and yellow noodles in the bowl `r emo::ji("monocle")` `#confinement`
 
-* All the pasta in the bowl are stored in a csv file [here](https://www.dropbox.com/s/qpjsk0rfgc0gx80/pasta.csv?dl=1).
+* All the noodles in the bowl are stored in a csv file [here](https://www.dropbox.com/s/qpjsk0rfgc0gx80/pasta.csv?dl=1).
 
 ```{r, echo = TRUE}
 bowl <- read.csv("https://www.dropbox.com/s/qpjsk0rfgc0gx80/pasta.csv?dl=1")
@@ -294,17 +294,17 @@ head(bowl)
 --
 
 .pull-right[
-* `pasta_ID`: pasta identifier
+* `pasta_ID`: noodle identifier
 
-* `color`: pasta color
+* `color`: noodle color
 
 ```{r, echo = TRUE}
 nrow(bowl)
 ```
 
-* Instead of selecting pasta with our hands, we'll take *virtual* draws from the bowl.
+* Instead of selecting noodles with our hands, we'll take *virtual* draws from the bowl.
 
-* We'll use the *virtual shovel* to take a sample of 50 pasta from our virtual bowl.
+* We'll use the *virtual shovel* to take a sample of 50 noodles from our virtual bowl.
 ]
 
 ---
@@ -320,7 +320,7 @@ nrow(bowl)
 library(moderndive)
 
 virtual_shovel <- bowl %>% # notice that moderndive functions can be "pipped"
-  rep_sample_n(size = 50) # take a sample of 50 pasta
+  rep_sample_n(size = 50) # take a sample of 50 noodles
 ```
 
 .pull-left[
@@ -343,18 +343,18 @@ nrow(virtual_shovel)
 
 ---
 
-# Proportion of Green Pasta
+# Proportion of Green noodles
 
 .pull-left[
 ```{r}
 sample_1 <- virtual_shovel %>% 
   summarize(
-    # number of green pasta in sample
+    # number of green noodles in sample
     num_green = sum(color == "green"),
     # number of observations in sample
     sample_n = n()) %>% 
   mutate(
-    # proportion of green pasta in sample
+    # proportion of green noodles in sample
     prop_green = num_green / sample_n)
 sample_1
 ```
@@ -362,12 +362,12 @@ sample_1
 
 .pull-right[
 1. Compute:
-  * sum of green pasta in sample,
+  * sum of green noodles in sample,
   * number of observations in sample (i.e. 50 in this case)
 
-1. Compute proportion of green pasta
+1. Compute proportion of green noodles
 
-`r emo::ji("point_right")` `r sample_1$prop_green` are green! This is an ***estimate*** of the proportion of green pasta in the bowl. What if we try again?
+`r emo::ji("point_right")` `r sample_1$prop_green` are green! This is an ***estimate*** of the proportion of green noodles in the bowl. What if we try again?
 
 What if we try many times, like, 33 times?
 ]
@@ -392,7 +392,7 @@ virtual_samples
 
 .pull-right[
 
-Compute the proportion of green pasta in each sample.
+Compute the proportion of green noodles in each sample.
 
 ```{r}
 virtual_prop_green <- virtual_samples %>% 
@@ -424,7 +424,7 @@ ggplot(virtual_prop_green, aes(x = prop_green)) +
                  color = "white",
                  fill = "darkgreen") +
   scale_y_continuous(breaks = seq(0, 12, by = 2)) +
-  labs(x = "Proportion of 50 pasta that were green",
+  labs(x = "Proportion of 50 noodles that were green",
        y = "Frequency",
        title = "Distribution of 33 samples of size 50") +
   theme_bw(base_size = 20)
@@ -441,7 +441,7 @@ ggplot(virtual_prop_green, aes(x = prop_green)) +
                  color = "white",
                  fill = "darkgreen") +
   scale_y_continuous(breaks = seq(0, 12, by = 2)) +
-  labs(x = "Proportion of 50 pasta that were green",
+  labs(x = "Proportion of 50 noodles that were green",
        y = "Frequency",
        title = "Distribution of 33 samples of size 50") +
   theme_bw(base_size = 20)
@@ -464,13 +464,13 @@ Instead of taking only 33 samples, let's take ***1000***!
 
 1. Obtain 1000 samples of size 50 using the `rep_sample_n()` function from the `moderndive` package.
 
-1. Calculate the proportion of green pasta in each sample.
+1. Calculate the proportion of green noodles in each sample.
 
-1. Plot a histogram of the obtained proportion of green pasta in each sample.
+1. Plot a histogram of the obtained proportion of green noodles in each sample.
 
 1. What do you observe? Which proportions occur most frequently? How does the shape of the histogram compare to when we took only 33 samples?
 
-1. How likely is it that we sample 50 pasta of which less than 20% are green?
+1. How likely is it that we sample 50 noodles of which less than 20% are green?
 
 ---
 
@@ -494,7 +494,7 @@ virtual_prop_green %>% ggplot(
     boundary = 0.41,
     color = "white",
     fill = "darkgreen") +
-  labs(x = "Proportion of green pasta in sample",
+  labs(x = "Proportion of green noodles in sample",
        y = "Frequency",
        title = "Distribution of 1000 samples of size 50") +
   theme_bw(base_size = 14)
@@ -510,7 +510,7 @@ Looks remarkably close to a ***normal distribution*** $\rightarrow$ the more sam
 
 Imagine you could change the size of your samples and had the option of the following sizes: 25, 50 and 100.
 
-If your goal is still to estimate the proportion of the bowl’s pasta that are green, which shovel would you choose?
+If your goal is still to estimate the proportion of the bowl’s noodles that are green, which shovel would you choose?
 
 ---
 
@@ -549,7 +549,7 @@ virtual_samples_100 <- bowl %>%
 
 .pull-right[
 
-Compute proportion of green pasta:
+Compute proportion of green noodles:
 
 ```{r}
 # Sample size: 25
@@ -594,9 +594,9 @@ df %>%
   geom_histogram(data = df %>% filter(sample_n == 100), binwidth = 0.01, boundary = 0.405, color = "white", fill = "darkgreen") +
   scale_x_continuous(breaks = round(seq(0, 1, by = 0.2),1), limits = c(0.2,0.8)) +
   labs(
-    x = "Proportion of green pasta in sample",
+    x = "Proportion of green noodles in sample",
     y = "Frequency",
-    title = "Comparing distributions of proportions of green pasta for different sample sizes"
+    title = "Comparing distributions of proportions of green noodles for different sample sizes"
   ) +
     facet_wrap(~sample_n, scales = "free_y", labeller = as_labeller(
         c(`25` = "1000 samples of size 25",
@@ -648,7 +648,7 @@ Sample Size | Standard Deviation
 
 --
 
-* So as the sample size increases, our ***estimates*** of the true proportion of the bowl's green pasta get more *precise*.
+* So as the sample size increases, our ***estimates*** of the true proportion of the bowl's green noodles get more *precise*.
 
 ---
 
@@ -658,7 +658,7 @@ Sample Size | Standard Deviation
 
 --
 
-* We extracted samples in order to ***estimate*** the proportion of the bowl's pasta that are green.
+* We extracted samples in order to ***estimate*** the proportion of the bowl's noodles that are green.
 
 --
 
@@ -675,10 +675,10 @@ Sample Size | Standard Deviation
 
 .pull-left[
 ***Population:*** collection of individuals or observations we are interested in.  
-$N = 713$ pasta.
+$N = 713$ noodles.
 
 ***Population parameter:*** numerical summary quantity about the population that is unknown but that we want to know.  
-*Examples:* population mean $(\mu)$, proportion of green pasta $(p)$.
+*Examples:* population mean $(\mu)$, proportion of green noodles $(p)$.
 
 ***Census:*** exhaustive enumeration or counting of all $N$ individuals or observations in the population in order to compute the population parameter’s value *exactly*.
 
@@ -689,11 +689,11 @@ $N = 713$ pasta.
 
 .pull-right[
 * ***Point estimate*** or ***Sample statistic:*** summary statistic computed from a sample that estimates an unknown population parameter.  
-*Example:* *sample proportion* of green pasta $(\hat{p})$. The "hat" on top of the $p$ indicates that it is an *estimate* of the population proportion $p$.
+*Example:* *sample proportion* of green noodles $(\hat{p})$. The "hat" on top of the $p$ indicates that it is an *estimate* of the population proportion $p$.
 
 * ***Representative sampling:*** does the sample *look like* the population?
 
-* ***Biased sampling:*** did all pasta have an equal chance of being included in a sample?
+* ***Biased sampling:*** did all noodles have an equal chance of being included in a sample?
 
 * ***Random sampling:*** randomly sampling in an unbiased fashion.
 
@@ -742,7 +742,7 @@ Sample Size $(n)$ | Standard Error of $\hat{p}$
 
 --
 
-* What is the true population proportion $p$ of green pasta in the population of $N=713$ pasta?
+* What is the true population proportion $p$ of green noodles in the population of $N=713$ noodles?
 
 --
 
@@ -777,9 +777,9 @@ df %>%
   geom_histogram(data = df %>% filter(sample_n == 100), binwidth = 0.01, boundary = 0.405, color = "white", fill = "darkgreen") +
   scale_x_continuous(breaks = round(seq(0, 1, by = 0.2),1), limits = c(0.2,0.8)) +
   labs(
-    x = "Proportion of green pasta in sample",
+    x = "Proportion of green noodles in sample",
     y = "Frequency",
-    title = "Comparing distributions of proportions of green pasta for different sample sizes"
+    title = "Comparing distributions of proportions of green noodles for different sample sizes"
   ) +
     facet_wrap(~sample_n, scales = "free_y", labeller = as_labeller(
         c(`25` = "1000 samples of size 25",

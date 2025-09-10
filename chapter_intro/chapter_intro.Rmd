@@ -1,8 +1,8 @@
 ---
-title: "ScPoEconometrics"
+title: "Econometrics"
 subtitle: "Introduction"
-author: "Mylène Feuillade, Gustave Kenedi, Florian Oswald and Junnan He"
-date: "Sciences Po Paris </br> `r Sys.Date()`"
+author: "Florian Oswald"
+date: "UniTo ESOMAS </br> `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     # chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
@@ -20,7 +20,7 @@ output:
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -58,7 +58,7 @@ countdown(
 
 
 
-# Welcome to ScPoEconometrics!
+# Welcome to Econometrics!
 
 --
 
@@ -79,6 +79,8 @@ countdown(
 ---
 
 # Answering Important Questions with Econometrics
+
+look for other examples than card only
 
 [<ru-blockquote>
 Does immigration *lead to* lower wages and/or higher unemployment for locals?
@@ -126,6 +128,10 @@ Does the neighborhood you grew up in have an *impact* on your life outcomes?
 
 * ["Credibility Revolution"](https://www.aeaweb.org/articles?id=10.1257/jep.24.2.3) in econometrics over the past 30 years ([2022 Economics Nobel](https://www.nobelprize.org/prizes/economic-sciences/2021/press-release/) awarded to some of the main protagonists of this "revolution")
 
+???
+
+test comment speaker note.
+
 ---
 
 layout: false
@@ -137,7 +143,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -212,7 +218,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div>
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div>
 
 ---
 
@@ -301,6 +307,10 @@ ggplot(data = gapminder_dplyr,
 ```
 ]
 
+???
+
+add note here
+
 ---
 
 # Animated Plotting 👌 <sup>1</sup>
@@ -355,7 +365,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -414,7 +424,7 @@ class: inverse
 
 # Task 1
 
-```{r}
+```{r,echo = FALSE}
 countdown(minutes = 5, top = 0)
 ```
 
@@ -535,12 +545,12 @@ class: inverse
 `r countdown(minutes = 7, top = 0)`
 
 ```{r, echo=F}
-murders <- read.csv("https://www.dropbox.com/s/zuk0qcfm3kyzs4e/gun_murders.csv?dl=1")
+murders <- read.csv("https://www.dropbox.com/scl/fi/uq8xlecjczy2t2vu50h7l/gun_murders.csv?rlkey=4zr1t5o7jsi9pgoey4tep467w&dl=1")
 ```
 
 1. Find out (using `help()` or google) how to import a .csv file. Do NOT use the "Import Dataset" button, nor install a package.
 
-1. Import [gun_murders.csv](https://www.dropbox.com/s/zuk0qcfm3kyzs4e/gun_murders.csv?dl=1)<sup>1</sup> in a new object `murders`. This file contains data on gun murders by US state in 2010. (Hint: objects are created using `=` or `<-`).
+1. Import [gun_murders.csv](https://www.dropbox.com/scl/fi/uq8xlecjczy2t2vu50h7l/gun_murders.csv?rlkey=4zr1t5o7jsi9pgoey4tep467w&dl=1)<sup>1</sup> in a new object `murders`. This file contains data on gun murders by US state in 2010. (Hint: objects are created using `=` or `<-`).
 
 1. Ensure that `murders` is a data.frame by running:
     ```{r,eval=F}
@@ -664,7 +674,7 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -688,74 +698,25 @@ layout: true
 
 ## Grading
 
-1. There will be ***five quizzes*** on Moodle roughly every two weeks $\rightarrow$ 40%
+1. There will be a closed book exam (70% of your grade).
 
 --
 
-1. There will be ***two take home exams / case studies*** $\rightarrow$ 60%
+1. There will be 5 quizzes on moodle during the semester (30%).
 
 --
 
-1. There will be _no_ final exam 😅
-
----
-
-# Syllabus 🤞
-
-.pull-left[
-Lecture 1 (today): ***Introduction***
-
-*Quiz 1 (after lecture 2)*
-
-Lectures 2 and 3: ***Tidying, Visualising and Summarising Data***
-
-*Quiz 2*
-
-Lecture 4: ***Simple Linear Regression***
-
-Lecture 5: ***Introduction to Causality***
-
-*Midterm Project*
-
-Lecture 6: ***Multiple Linear Regression***
-
-Lecture 7: ***Linear Regression Extensions***
-]
-
-.pull-right[
-*Quiz 3*
-
-Lecture 8: ***Sampling***
-
-Lecture 9: ***Confidence Intervals and Hypothesis Testing***
-
-*Quiz 4*
-
-Lecture 10: ***Statistical Inference***
-
-Lecture 11: ***Regression Discontinuity***
-
-*Quiz 5*
-
-Lecture 12: ***Recap***
-
-*Final Project*
-]
+1. There will no R question on the exam but my hope that it will help you understand difficult theoretical concepts.
 
 ---
 
 # Course Materials and Useful Resources
 
-&nbsp; &nbsp; &nbsp; &nbsp; [Book](https://scpoecon.github.io/ScPoEconometrics/) &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; [Slides](https://github.com/ScPoEcon/ScPoEconometrics-Slides) &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; [Reading Suggestions](https://github.com/ScPoEcon/ScPoEconometrics-Slides/blob/master/syllabus.md) &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp;  [Interactive R Apps](https://github.com/ScPoEcon/ScPoApps) &nbsp; &nbsp; &nbsp; &nbsp;
--- | -- | --
-
---
-
 .pull-left[
 ## Econometrics
+- [*Introduction to Econometrics* by Stock and Watson - main textbook!](https://uspc-spo.primo.exlibrisgroup.com/permalink/33USPC_SPO/mgsi7h/alma991003436429705808)
 - [*Mastering Metrics* by Angrist and Pischke](https://uspc-spo.primo.exlibrisgroup.com/permalink/33USPC_SPO/1d4eftp/alma991003947949705808)
 - [*Introductory Econometrics: A Modern Approach* by Wooldridge](https://uspc-spo.primo.exlibrisgroup.com/permalink/33USPC_SPO/mgsi7h/alma991003442469705808)
-- [*Introduction to Econometrics* by Stock and Watson](https://uspc-spo.primo.exlibrisgroup.com/permalink/33USPC_SPO/mgsi7h/alma991003436429705808)
 - [*Causal Inference: The Mixtape* by Cunningham](https://mixtape.scunning.com/)
 - [Ben Lambert's youtube channel](https://www.youtube.com/user/SpartacanUsuals)
 ]
@@ -788,7 +749,6 @@ We will ***exclusively*** use Slack for our interactions.
 
 Please ***DO NOT*** contact me by email (unless there's a legitimate reason to).
 
-I will be checking Slack sparingly so please help one another!
 ]
 
 --
@@ -796,43 +756,19 @@ I will be checking Slack sparingly so please help one another!
 .pull-right[
 ***Class conduct and expectations***
 
-*Late work:* Won't be accepted unless you have a very good reason.
-
-*Cheating:* You will get 0. Just don't cheat, it's honestly not worth it.
+*Come to class:* I will explain concepts in class, you will understand better.
 
 *Work in groups:* You can/should work in groups of 2-3 on the quizzes.
 ]
 
 ---
 
-# Mental Health
-
-> ***Pay attention to your mental health in the same way you would your physical health.***
-
---
-
-Seeking help is a sign of perceptive self-awareness, [not weakness](https://www.nytimes.com/2020/09/24/well/mind/cord-jefferson-emmy-black-mental-health.html).
-
---
-
-Don't hesitate to ***reach out*** to your friends, family, any professor (including myself!) if you feel the need.
-
-***Sciences Po*** offers free and confidential [psychological support services](https://www.sciencespo.fr/students/en/living/health/health-centre) with professionals.
-
----
-
-# Last But Not Least: Class Rep 
-
-.center[![:scale 60%](chapter_intro_files/figure-html/notme.gif)]
-
----
-
 class: title-slide-final, middle
-background-image: url(../img/logo/ScPo-econ.png)
+background-image: url(../img/logo/esomas.png)
 background-size: 250px
 background-position: 9% 19%
 
-# SEE YOU NEXT WEEK!
+# That's it!
 
 
 

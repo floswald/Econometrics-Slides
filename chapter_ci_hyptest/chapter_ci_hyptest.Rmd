@@ -62,12 +62,12 @@ overwrite = FALSE
 ---
 
 background-image: url(https://media.giphy.com/media/hXG93399r19vi/giphy.gif)
-background-position: 18% 45%
+background-position: 80% 45%
 background-size: 450px
 
-# Back to reality (there goes gravity `r emo::ji("wink")`)
+# Back to reality
 
-.pull-right[
+.pull-left[
 
 * In real life we only get to take ***one*** sample from the population (not ***1000***!).
 
@@ -139,9 +139,9 @@ In practice, you ***don't*** need to compute your confidence intervals using *bo
 
 ---
 
-# Back to Pasta
+# Back to Noodles
 
-* As in real life, imagine we had access to *only one random sample* from our bowl of pasta.
+* As in real life, imagine we had access to *only one random sample* from our bowl of noodles.
 
 --
 
@@ -191,22 +191,22 @@ p_hat = mean(my_sample$color == "green")
 p_hat
 ```
 
-The proportion of green pasta in this sample is: $\hat{p} = `r p_hat`$.
+The proportion of green noodles in this sample is: $\hat{p} = `r p_hat`$.
 ]
 
 ---
 
-# Resampling our Pasta Sample
+# Resampling from our Noodles Sample
 
 How do we obtain a ***bootstrap sample***?
 
 --
   
-  1. Randomly pick ***one*** pasta from the sample and record the associated color.
+  1. Randomly pick ***one*** noodle from the sample and record the associated color.
   
 --
   
-  1. Put this pasta back in the sample.
+  1. Put this noodle **back** into sample.
   
 --
   
@@ -214,18 +214,18 @@ How do we obtain a ***bootstrap sample***?
 
 --
 
-  1. Compute the proportion of green pasta in the bootstrap sample.
+  1. Compute the proportion of green noodles in the bootstrap sample.
   
 --
 
 This procedure is called ***resampling with replacement***:
 
   * *resampling*: drawing repeated samples from a sample.
-  * *with replacement*: each time the drawn pasta is put back in the sample.
+  * *with replacement*: each time the drawn noodle is put back in the sample.
 
 ---
 
-# Resampling our Pasta Sample
+# Resampling our Noodles Sample
 
 .pull-left[
 
@@ -246,9 +246,9 @@ nrow(one_bootstrap)
 
 .pull-right[
 
-Several pasta have been drawn multiple times. How come?
+Several noodles have been drawn multiple times. How come?
 
-What's the proportion of green pasta in this bootstrap sample?
+What's the proportion of green noodles in this bootstrap sample?
 
 ```{r}
 mean(one_bootstrap$color == "green")
@@ -292,7 +292,7 @@ bootstrap_distrib = my_sample %>%
   specify(response = color, success = "green") %>% 
   # generate 1000 bootstrap samples 
   generate(reps = 1000, type = "bootstrap") %>% 
-  # calculate the proportion of green pasta for each
+  # calculate the proportion of green noodles for each
   calculate(stat = "prop") 
 ```
 ]
@@ -320,7 +320,7 @@ Let's visualize this sampling variation!
 boot_distrib_plot = bootstrap_distrib %>%
   ggplot(aes(x = stat)) +
   geom_histogram(boundary = 0.39, binwidth = 0.02, col = "white", fill = "darkgreen") +
-  labs(x = "Proportion of green pasta",
+  labs(x = "Proportion of green noodles",
        y = "Frequency") +
   theme_bw(base_size = 14)
 boot_distrib_plot
@@ -370,11 +370,11 @@ Let's use this ***bootstrap distribution*** to construct confidence intervals!
 
 --
 
-* In our case the fish is the true proportion of pasta in the bowl that are green $(p)$.
+* In our case the fish is the true proportion of noodles in the bowl that are green $(p)$.
 
 --
 
-* The *point estimate* would be the proportion of green pasta obtained from a random sample $(\hat{p})$.
+* The *point estimate* would be the proportion of green noodles obtained from a random sample $(\hat{p})$.
 
 --
 
@@ -508,7 +508,7 @@ ggplot(percentile_cis) +
     # Removed point estimates since it doesn't necessarily act as center for 
     # percentile-based CI's
     # geom_point(aes(x = sample_prop, y = replicate, color = captured)) +
-    labs(x = expression("Proportion of green pasta"), y = "Confidence interval number", 
+    labs(x = expression("Proportion of green noodles"), y = "Confidence interval number", 
          alpha = "Contains Truth") +
     geom_vline(xintercept = p, color = "#d90502", size = 1, linetype = "dashed") +
   annotate("text", x = 0.47, y = 5, label = "population proportion", col = "#d90502") +
@@ -889,7 +889,7 @@ visualize(null_distribution, bins = 10, fill = "red") +
 
 # Hypothesis Test Notation and Definitions
 
-> ### ***p-value:*** probability of observing a test statistic *just as or more extreme* than the one we obtained, assuming the null hypothesis $H_0$ is true. `r emo::ji("thinking")`
+> ### ***p-value:*** probability of observing a test statistic *just as or more extreme* than the one we obtained, assuming the null hypothesis $H_0$ is true. 
 
 --
 
@@ -1048,7 +1048,7 @@ In hypothesis testing, there are ***two types of errors***:
 
 --
 
-* The answer in the next episode of *Introduction to Econometrics with R*! `r emo::ji("monkey_face")`
+* The answer in the next episode of *Introduction to Econometrics with R*! 
 
 ---
 

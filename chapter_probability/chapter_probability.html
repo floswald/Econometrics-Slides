@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Econometrics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Florian Oswald" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="../css/scpo.css" type="text/css" />
+    <link rel="stylesheet" href="../css/scpo-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Econometrics
+]
+.subtitle[
+## Probability
+]
+.author[
+### Florian Oswald
+]
+.date[
+### UniTo ESOMAS </br> 2025-09-05
+]
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+
+
+
+
+# Probability
+
+
+1. Probabilities and RVs
+2. PDFs and CDFs of discrete
+3. PDFs and CDFs of cont
+4. E, Var
+5. funcs of RVs
+6. standardizing RVs
+7. joint and marginal dists
+8. conditional dists, independence, covariance, corr
+9. LIE
+10. correlation and conditional mean
+11. KC 2.3
+12. random sampling and distributions of resulting statistics
+
+
+---
+
+# Probabilities
+
+*Probability* is a function that assigns a value in `\([0,1]\)` to a *set* (representing *events*).
+
+Consider a fair 6-sided dice.
+
+* Outcome space: `\(\Omega = \{1,2,3,4,5,6\}\)`
+* Event: a partition of `\(\Omega\)`.
+
+--
+
+For example, the events A ("the outcome is even") and B ("the outcome is odd") are:
+
+$$
+`\begin{align}
+A &amp;= \{2,4,6\},\\
+B &amp;= \{1,3,5\}.
+\end{align}`
+$$
+Having a *fair* dice means that
+
+$$
+\Pr(1) = \dots = \Pr(6) = \frac{1}{6}
+$$
+
+---
+
+# Discrete Random Variables
+
+A *Discrete Random Variable* is a function mapping outcomes to a measurements.
+
+* For example, we might call `\(X\)` the number we obtain from throwing the dice once.
+
+* For example, we might call `\(Y\)` the 2 numbers we obtain from throwing the dice two times. 
+
+
+---
+class: inverse
+
+# Gambler's Ruin
+
+The dealer tosses a fair coin. If it comes up tails (`T`) you win, if it's heads (`H`)you loose. 
+
+Suppose we've seen the following sequence of tosses so far, where `0` means heads, and `1` means tails:
+
+```
+outcome:  H   H   H   H   H   H   H   H   H   H   ?
+toss num: 1.  2.  3.  4.  5.  6.  7.  8.  9.  10. 11.  
+```
+
+You have lost 10 times in a row now. Does this increase the probability that you will win the next round? 
+
+
+---
+
+## Gambler's Ruin
+
+The probability of hitting 11 `H` in a row is
+
+$$
+\Pr(\text{11 Heads in a Row}) = \frac{1}{2^{11}} = 0.00048 = 0.05\%
+$$
+--
+
+Ok, but I already had 10 `H`! What's the next toss likely going to be given that miserable history?
+
+$$
+\Pr(\text{toss 11 is Heads} | 10 \text{ Heads before})
+$$
+Let's calculate that probability!
+
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# Probability Distributions
+
+---
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+
+---
+
+## PDFs and CDFs of discrete RVs
+
+* The PDF of a discrete RV is a table listing each outcome and the associated probability of observing it. (sometimes called probability *mass* function)
+* The CDF is the probability that a given RV takes on a value less than or equal a certain value. 
+
+### For our 6-sided fair dice
+
+
+```
+##   outcome pdf cdf
+## 1       1 1/6 1/6
+## 2       2 1/6 2/6
+## 3       3 1/6 3/6
+## 4       4 1/6 4/6
+## 5       5 1/6 5/6
+## 6       6 1/6 6/6
+```
+
+---
+
+## PDFs and CDFs of discrete RVs
+
+* The PDF of a discrete RV is a table listing each outcome and the associated probability of observing it. (sometimes called probability *mass* function)
+* The CDF is the probability that a given RV takes on a value less than or equal a certain value. 
+
+### For our 6-sided fair dice
+
+.pull-left[
+
+&lt;img src="chapter_probability_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="chapter_probability_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+## Bernoulli Distribution
+
+* A special discrete RV with 2 outcomes: `0` and `1`, where event `1` ("success") occurs with probability `\(p\)`.
+
+For example:
+
+* Tomorrow it will rain with probability `\(p\)` (it will *not* rain with `\(1-p\)`).
+
+--
+
+What kind of RV is flipping a *fair* coin? What about an *unfair* coin?
+
+---
+
+## PDFs and CDFs of continuous Variables
+
+* slightly more complicated because we need calculus and integration.
+* The basic idea is the same!
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# Expected Value and Variance
+
+---
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+
+---
+
+## Expected Value and Variance
+
+We write
+
+$$
+E(Y) = y_1 p_1 + \dots + y_n p_n
+$$
+
+For example for our dice example, where `\(X\)` is the result of throwing the dice: 
+
+$$
+`\begin{align}
+E(X) &amp;= 1 \times \Pr(1) + 2 \times \Pr(2) + \dots + 6 \times \Pr(6) \\
+     &amp;=
+\end{align}`
+$$
+**Everybody calculate this result now!**
+
+---
+
+## Expected Value and Variance
+
+We write
+
+$$
+E(Y) = y_1 p_1 + \dots + y_n p_n
+$$
+
+
+For example for our dice example, where `\(X\)` is the result of throwing the dice: 
+
+$$
+`\begin{align}
+E(X) &amp;= 1 \times \Pr(1) + 2 \times \Pr(2) + \dots + 6 \times \Pr(6) \\
+     &amp;= 1 \times \frac{1}{6} + 2 \times \frac{1}{6} + \dots + 6 \times \frac{1}{6} \\
+     &amp;= 3.5 \\
+\end{align}`
+$$
+* Given the weight is constant (`\(1/6\)`), this is identical to the arithmetic mean of numbers 1,...6:
+
+
+``` r
+mean(1:6)
+```
+
+```
+## [1] 3.5
+```
+
+---
+
+## `\(E(X)\)` is a Theoretical Concept
+
+* `\(E(X)\)` hinges on the fact that we know the precise probabilities of each outcome.
+* If we had a huge number of dice throws, we could form an *estimate* of `\(E(X)\)`, based on those data (more on that later)
+
+
+``` r
+set.seed(12345)  # to ensure reproducibility
+x = sample(1:6, size = 10000, replace = TRUE)
+estimate = mean(x)
+estimate
+```
+
+```
+## [1] 3.495
+```
+---
+
+# Central Tendency - Mean and Median
+
+
+.pull-left[
+`mean(x)`: the average of all values in `x`.
+`$$\bar{x} = \frac{1}{N}\sum_{i=1}^N x_i$$`
+
+
+``` r
+x &lt;- c(1,2,2,2,2,100)
+mean(x)
+```
+
+```
+## [1] 18.16667
+```
+
+``` r
+mean(x) == sum(x) / length(x)
+```
+
+```
+## [1] FALSE
+```
+]
+
+--
+
+.pull-right[
+`median`: the value `\(x_j\)` below and above which 50% of the values in `x` lie. `\(m\)` is the median if
+    `$$\Pr(X \leq m) \geq 0.5 \text{ and } \Pr(X \geq m) \geq 0.5$$`
+    
+The median is robust against *outliers*.
+
+
+``` r
+median(x)
+```
+
+```
+## [1] 2
+```
+]
+
+---
+
+## Quick Review
+
+1. EV of a bernoulli
+2. Continuous RV
+
+---
+
+## Variance
+
+* A measure of *spread* of a distribution.
+* The definition of *variance* is
+
+$$
+var(Y) = E[(Y-\mu_Y)^2]
+$$
+
+if `\(Y\)` is discrete,
+
+$$
+var(Y) = \sum_{i=1}^N (y_i-\mu_Y)^2 \times p_i.
+$$
+
+## Variance
+
+.pull-left[
+
+Consider two `normal distributions` with equal mean at `0`:
+]
+
+--
+
+.pull-right[
+&lt;img src="chapter_probability_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+
+Compute with:
+
+``` r
+var(x)
+```
+]
+
+---
+
+## Example of other Spread Measures
+
+.pull-left[
+
+
+``` r
+# % catholic in 47 french-speaking
+# swiss cantons in 1888
+plot(swiss$Catholic,rep(1,nrow(swiss)),pch = 3,cex = 2,
+     xlab = "% Catholic",yaxt = "n",ylab = "") 
+```
+
+&lt;img src="chapter_probability_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+How do the values in column `Catholic` *vary*?
+
+| Measure            | `R`              | Result             |
+|:---------:|:-------------------:|:---------------------:|
+| Variance           | `var(swiss$Catholic)`   | 1739.29   |
+| Standard Deviation | `sd(swiss$Catholic)`    | 41.7    |
+| IQR                | `IQR(swiss$Catholic)`   | 87.93   |
+| Minimum            | `min(swiss$Catholic)`   | 2.15   |
+| Maximum            | `max(swiss$Catholic)`   | 100   |
+| Range              | `range(swiss$Catholic)` | 2.15, 100 |
+
+]
+
+---
+
+# Computing Variance by hand
+
+1. Compute the variance of the our 6-sided dice!
+2. compute the variance of `\(X \sim \text{Bernoulli}(p)\)`!
+
+
+---
+
+layout: false
+class: title-slide-section-red, middle
+
+# 2 Random Variables
+
+---
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="../img/logo/unito-shield.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+
+---
+
+# Two Random Variables
+
+&lt;img src="chapter_probability_files/figure-html/x-y-corr-1.svg" style="display: block; margin: auto;" /&gt;
+
+Taking as example the data in this plot, the concepts *covariance* and *correlation* relate to the following type of question:
+
+
+# missing
+
+joint and marginal dists
+8. conditional dists, independence, covariance, corr
+9. LIE
+10. correlation and conditional mean
+
+create/get a table and illustrate
+
+---
+
+# Tabulating Data
+
+
+
+`table(x)` is a useful function that counts the occurence of each unique value in `x`:
+
+``` r
+table(gapminder$continent)
+```
+
+```
+## 
+##   Africa Americas     Asia   Europe  Oceania 
+##     2907     2052     2679     2223      684
+```
+
+--
+
+The same can be achieved using the `count` function (from `dplyr`)
+
+``` r
+gapminder %&gt;% count(continent)
+```
+
+```
+##   continent    n
+## 1    Africa 2907
+## 2  Americas 2052
+## 3      Asia 2679
+## 4    Europe 2223
+## 5   Oceania  684
+```
+
+---
+
+# Tabulating Data
+
+
+Given two variables, `table` produces a contingency table:
+
+``` r
+gapminder_new &lt;- gapminder %&gt;%
+  filter(year == 2015) %&gt;%
+  mutate(fertility_above_2 = (fertility &gt; 2.1)) # dummy variable for fertility rate above replacement rate
+```
+
+.pull-left[
+
+``` r
+table(gapminder_new$fertility_above_2)
+```
+
+```
+## 
+## FALSE  TRUE 
+##    80   104
+```
+]
+
+--
+
+.pull-right[
+
+``` r
+table(gapminder_new$fertility_above_2,gapminder_new$continent)
+```
+
+```
+##        
+##         Africa Americas Asia Europe Oceania
+##   FALSE      2       15   20     39       4
+##   TRUE      49       20   27      0       8
+```
+]
+
+--
+
+With `prop.table`, we can get proportions:
+
+``` r
+# proportions by row
+prop.table(table(gapminder_new$fertility_above_2,gapminder_new$continent), margin = 1)
+# proportions by column
+prop.table(table(gapminder_new$fertility_above_2,gapminder_new$continent), margin = 2) 
+```
+
+* ⚠️ To obtain `table`s or `crosstable`s with `NA`s, use the `useNA = "always"` or `useNA = "ifany"`
+
+---
+
+# Tabulating Data
+
+Again the `count` function can get you there as well:
+
+
+``` r
+gapminder_new %&gt;%
+  count(continent, fertility_above_2)
+```
+
+```
+##    continent fertility_above_2  n
+## 1     Africa             FALSE  2
+## 2     Africa              TRUE 49
+## 3   Americas             FALSE 15
+## 4   Americas              TRUE 20
+## 5   Americas                NA  1
+## 6       Asia             FALSE 20
+## 7       Asia              TRUE 27
+## 8     Europe             FALSE 39
+## 9    Oceania             FALSE  4
+## 10   Oceania              TRUE  8
+```
+
+Note that `count` will display `NA`s only if there are some.
+
+
+``` r
+gapminder_new %&gt;% filter(is.na(fertility)) %&gt;% select(country)
+```
+
+```
+##     country
+## 1 Greenland
+```
+
+
+
+---
+
+# Joint Distributions
+
+
+
+.pull-left[
+
+``` r
+abs_tab
+```
+
+```
+##           
+##            FALSE TRUE
+##   Africa       2   49
+##   Americas    15   20
+##   Asia        20   27
+##   Europe      39    0
+##   Oceania      4    8
+```
+There are 184 countries.
+]
+
+.pull-right[
+
+``` r
+prop_tab
+```
+
+```
+##           
+##            FALSE TRUE
+##   Africa    0.01 0.27
+##   Americas  0.08 0.11
+##   Asia      0.11 0.15
+##   Europe    0.21 0.00
+##   Oceania   0.02 0.04
+```
+What *fraction* of countries is in each bin?
+
+* 👉The *joint distribution*.
+* `\(\Pr(X,Y)\)` where X = `continent` and Y = `fertility_above_2`
+]
+
+--
+
+👉 The *conditional distribution* is `\(\Pr(X=x|Y=y) = \frac{\Pr(X=x,Y=y)}{\Pr(Y=y)}\)`
+
+---
+
+class: inverse
+
+# Computing Conditional Distributions
+
+<div class="countdown" id="timer_e30a1a2f" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+.pull-left[
+
+``` r
+prop_tab
+```
+
+```
+##           
+##            FALSE TRUE
+##   Africa    0.01 0.27
+##   Americas  0.08 0.11
+##   Asia      0.11 0.15
+##   Europe    0.21 0.00
+##   Oceania   0.02 0.04
+```
+]
+
+.pull-right[
+1. Compute the Distribution of countries with low fertility?
+2. Compute the Distribution of countries in Asia?
+]
+
+
+``` r
+prop_tab[,1] / sum(prop_tab[,1])
+```
+
+```
+##     Africa   Americas       Asia     Europe    Oceania 
+## 0.02325581 0.18604651 0.25581395 0.48837209 0.04651163
+```
+
+---
+
+# How are x and y related? Covariance and Correlation
+
+---
+
+# Covariance
+
+* The covariance is a measure of __joint variability__ of two variables.
+    `$$Cov(x,y) = \frac{1}{N} \sum_{i=1}^N(x_i-\bar{x})(y_i-\bar{y})$$`
+
+--
+
+* The `cov` function computes the covariance:
+
+
+``` r
+cov(gapminder_new$fertility,gapminder_new$infant_mortality, use = "complete.obs")
+```
+
+```
+## [1] 24.21146
+```
+
+--
+
+* Difficult to interpret because sensitive to the variables' dispersions from the mean
+
+---
+
+# Correlation
+
+* The correlation is a measure of the strength of the __linear association__ between two variables.
+    `$$Cor(x,y) = \frac{Cov(x,y)}{\sqrt{Var(x)}\sqrt{Var(y)}}$$`
+
+--
+
+* The `cor` function computes the correlation:
+
+
+``` r
+cor(gapminder_new$fertility,gapminder_new$infant_mortality, use = "complete.obs")
+```
+
+```
+## [1] 0.8286402
+```
+
+---
+
+# Correlation
+
+* **Correlation is always between -1 and 1!**
+
+--
+
+
+
+.footnote[
+*Source: [mathisfun](https://www.mathsisfun.com/data/correlation.html)*
+]
+
+---
+
+# Correlation
+
+* [App](https://gustavek.shinyapps.io/corr_continuous/)
+
+&lt;iframe src="https://gustavek.shinyapps.io/corr_continuous/" width="100%" height="400px" data-external="1"&gt;&lt;/iframe&gt;
+
+---
+
+class: inverse
+
+# Task 4: Summarising data
+
+<div class="countdown" id="timer_2c0714eb" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+1. Compute the mean of GDP in 2011 and assign to object `mean`. You should exclude missing values. (*Hint: read the help for `mean` to remove `NA`s*).
+
+1. Compute the median of GDP in 2011 and assign to object `median`. Again, you should exclude missing values. Is it greater or smaller than the average?
+
+1. Create a density plot of GDP in 2011 using `geom_density`. A density plot is a way of representing the distribution of a numeric variable. Add the following code to your plot to show the median and mean as vertical lines. What do you observe?
+`geom_vline(xintercept = as.numeric(mean), colour = "red") +` &lt;br&gt;
+    `geom_vline(xintercept = as.numeric(median), colour = "orange")`
+
+1. Compute the correlation between fertility and infant mortality in 2015. To drop `NA`s in either variable set the argument `use` to "pairwise.complete.obs" in your `cor()` function. Is this correlation consistent with the graph you produced in Task 3?
+
+
+---
+
+class: title-slide-final, middle
+background-image: url(../img/logo/esomas.png)
+background-size: 250px
+background-position: 9% 19%
+
+# That's it!
+
+
+
+
+|                                                                                                            |                                   |
+| :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
+| &lt;a href="https://github.com/ScPoEcon/ScPoEconometrics-Slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
+| &lt;a href="https://scpoecon.github.io/ScPoEconometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
+| &lt;a href="http://twitter.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                         |
+| &lt;a href="http://github.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                       |
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../js/ru_xaringan.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

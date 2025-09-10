@@ -1,8 +1,8 @@
 ---
-title: "ScPoEconometrics"
-subtitle: "Tidying, Visualising and Summarising Data"
-author: "Mylène Feuillade, Gustave Kenedi, Florian Oswald and Junnan He"
-date: "SciencesPo Paris </br> `r Sys.Date()`"
+title: "Econometrics"
+subtitle: "Tidying 🧹, Visualising 📈 and </br>  Summarising 📊 Data"
+author: "Florian Oswald"
+date: "UniTo ESOMAS </br> `r Sys.Date()`"
 output:
   xaringan::moon_reader:
     chakra: "https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"
@@ -20,7 +20,7 @@ output:
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -77,12 +77,12 @@ knitr::include_graphics("chapter_tidy_files/figure-html/data_science_pipeline.pn
 layout: false
 class: title-slide-section-red, middle
 
-# Tidying Data
+# Tidying Data 🧹
 
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -181,7 +181,7 @@ str(polls_us_election_2016)
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -307,7 +307,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -399,7 +399,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -481,7 +481,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -545,7 +545,7 @@ polls_us_election_2016 %>%
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # `dplyr` Verbs
 
@@ -668,7 +668,7 @@ polls_us_election_2016 %>%
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # Chaining `r emo::ji("link")` Commands Together
 
@@ -831,7 +831,7 @@ polls_us_election_2016$samplesize |> mean(na.rm = T)
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -909,7 +909,7 @@ class: title-slide-section-red, middle
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1027,7 +1027,7 @@ ggplot(data)
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1081,7 +1081,7 @@ aes(
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1164,7 +1164,7 @@ Just start typing `geom_` in `RStudio` to see all the options
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # (Y)Our first plot!
 ---
@@ -1308,7 +1308,7 @@ g
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1351,7 +1351,7 @@ g + facet_grid(~ continent)
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1377,7 +1377,7 @@ g + labs(x = "Year", y = "Average Population", color = "Continent")
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1434,7 +1434,7 @@ g + scale_x_continuous(breaks = seq(1950, 2020, 10))
 ---
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 # gg is for Grammar of Graphics
 
@@ -1450,7 +1450,7 @@ layout: true
 
 layout:true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -1519,7 +1519,18 @@ class: title-slide-section-red, middle
 
 layout: true
 
-<div class="my-footer"><img src="../img/logo/ScPo-shield.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+---
+
+# missing
+
+joint and marginal dists
+8. conditional dists, independence, covariance, corr
+9. LIE
+10. correlation and conditional mean
+
+create/get a table and illustrate
 
 ---
 
@@ -1534,11 +1545,15 @@ layout: true
 
 --
 
-* In particular, let's look at two features: *central tendency* and *spread*.
+* We will introduce Probability and Distributions first.
+
+--
+
+* All of this is recap from your stats classes. 🧐
 
 ---
 
-# Central Tendency
+# Central Tendency - Mean and Median
 
 
 .pull-left[

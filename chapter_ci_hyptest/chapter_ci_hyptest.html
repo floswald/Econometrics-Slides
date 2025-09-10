@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald, Gustave Kenedi, Pierre Villedieu and Mylène Feuillade, Junnan He
 ]
 .date[
-### SciencesPo Paris </br> 2022-11-22
+### SciencesPo Paris </br> 2025-09-05
 ]
 
 ---
@@ -51,12 +51,12 @@ layout: true
 ---
 
 background-image: url(https://media.giphy.com/media/hXG93399r19vi/giphy.gif)
-background-position: 18% 45%
+background-position: 80% 45%
 background-size: 450px
 
-# Back to reality (there goes gravity 😉)
+# Back to reality
 
-.pull-right[
+.pull-left[
 
 * In real life we only get to take ***one*** sample from the population (not ***1000***!).
 
@@ -128,9 +128,9 @@ In practice, you ***don't*** need to compute your confidence intervals using *bo
 
 ---
 
-# Back to Pasta
+# Back to Noodles
 
-* As in real life, imagine we had access to *only one random sample* from our bowl of pasta.
+* As in real life, imagine we had access to *only one random sample* from our bowl of noodles.
 
 --
 
@@ -143,7 +143,7 @@ In practice, you ***don't*** need to compute your confidence intervals using *bo
 
 
 
-```r
+``` r
 library(tidyverse)
 bowl &lt;- read.csv("https://www.dropbox.com/s/qpjsk0rfgc0gx80/pasta.csv?dl=1")
 
@@ -156,7 +156,7 @@ my_sample = bowl %&gt;%
 
 .pull-left[
 
-```r
+``` r
 head(my_sample,3)
 ```
 
@@ -174,7 +174,7 @@ head(my_sample,3)
 
 .pull-right[
 
-```r
+``` r
 p_hat = mean(my_sample$color == "green")
 p_hat
 ```
@@ -183,22 +183,22 @@ p_hat
 ## [1] 0.46
 ```
 
-The proportion of green pasta in this sample is: `\(\hat{p} = 0.46\)`.
+The proportion of green noodles in this sample is: `\(\hat{p} = 0.46\)`.
 ]
 
 ---
 
-# Resampling our Pasta Sample
+# Resampling from our Noodles Sample
 
 How do we obtain a ***bootstrap sample***?
 
 --
   
-  1. Randomly pick ***one*** pasta from the sample and record the associated color.
+  1. Randomly pick ***one*** noodle from the sample and record the associated color.
   
 --
   
-  1. Put this pasta back in the sample.
+  1. Put this noodle **back** into sample.
   
 --
   
@@ -206,25 +206,25 @@ How do we obtain a ***bootstrap sample***?
 
 --
 
-  1. Compute the proportion of green pasta in the bootstrap sample.
+  1. Compute the proportion of green noodles in the bootstrap sample.
   
 --
 
 This procedure is called ***resampling with replacement***:
 
   * *resampling*: drawing repeated samples from a sample.
-  * *with replacement*: each time the drawn pasta is put back in the sample.
+  * *with replacement*: each time the drawn noodle is put back in the sample.
 
 ---
 
-# Resampling our Pasta Sample
+# Resampling our Noodles Sample
 
 .pull-left[
 
 Here is one bootstrap sample: 
 
 
-```r
+``` r
 one_bootstrap = my_sample %&gt;%
   rep_sample_n(size = 50, replace = TRUE) %&gt;%
   arrange(pasta_ID)
@@ -247,7 +247,7 @@ head(one_bootstrap, 8)
 ## 8         1      103 non-green
 ```
 
-```r
+``` r
 nrow(one_bootstrap)
 ```
 
@@ -260,12 +260,12 @@ nrow(one_bootstrap)
 
 .pull-right[
 
-Several pasta have been drawn multiple times. How come?
+Several noodles have been drawn multiple times. How come?
 
-What's the proportion of green pasta in this bootstrap sample?
+What's the proportion of green noodles in this bootstrap sample?
 
 
-```r
+``` r
 mean(one_bootstrap$color == "green")
 ```
 
@@ -294,7 +294,7 @@ We use the `infer` package to ease the bootstrapping procedure.
 
 
 
-```r
+``` r
 library(infer)
 
 bootstrap_distrib = my_sample %&gt;%
@@ -302,7 +302,7 @@ bootstrap_distrib = my_sample %&gt;%
   specify(response = color, success = "green") %&gt;% 
   # generate 1000 bootstrap samples 
   generate(reps = 1000, type = "bootstrap") %&gt;% 
-  # calculate the proportion of green pasta for each
+  # calculate the proportion of green noodles for each
   calculate(stat = "prop") 
 ```
 ]
@@ -313,7 +313,7 @@ bootstrap_distrib = my_sample %&gt;%
 Here are the first 6 rows:
 
 
-```r
+``` r
 head(bootstrap_distrib)
 ```
 
@@ -330,7 +330,7 @@ head(bootstrap_distrib)
 ## 6         6  0.52
 ```
 
-```r
+``` r
 nrow(bootstrap_distrib)
 ```
 
@@ -384,11 +384,11 @@ Let's use this ***bootstrap distribution*** to construct confidence intervals!
 
 --
 
-* In our case the fish is the true proportion of pasta in the bowl that are green `\((p)\)`.
+* In our case the fish is the true proportion of noodles in the bowl that are green `\((p)\)`.
 
 --
 
-* The *point estimate* would be the proportion of green pasta obtained from a random sample `\((\hat{p})\)`.
+* The *point estimate* would be the proportion of green noodles obtained from a random sample `\((\hat{p})\)`.
 
 --
 
@@ -414,7 +414,7 @@ Let's use this ***bootstrap distribution*** to construct confidence intervals!
 
 .pull-left[
 
-```r
+``` r
 quantile(bootstrap_distrib$stat,0.025)
 ```
 
@@ -425,7 +425,7 @@ quantile(bootstrap_distrib$stat,0.025)
 ]
 .pull-right[
 
-```r
+``` r
 quantile(bootstrap_distrib$stat,0.975)
 ```
 
@@ -573,7 +573,7 @@ layout: true
 
 .pull-right[
 
-```r
+``` r
 library(moderndive)
 head(promotions)
 ```
@@ -599,7 +599,7 @@ head(promotions)
 How many men and women were offered a promotion (and not)?
 
 
-```r
+``` r
 promotions %&gt;% 
   group_by(gender, decision) %&gt;% 
   tally() %&gt;%
@@ -643,7 +643,7 @@ There is a ***29.2 percentage points difference*** in promotions between men and
 .pull-left[
 
 
-```r
+``` r
 promotions %&gt;%
        left_join(promotions_shuffled %&gt;%
                    rename(shuffled_gender = gender)) %&gt;%
@@ -670,7 +670,7 @@ How do the promotion rates look like in our reshuffled sample?
 .pull-right[
 
 
-```r
+``` r
 promotions_shuffled %&gt;% 
   group_by(gender, decision) %&gt;% 
   tally() %&gt;%
@@ -702,7 +702,7 @@ The difference is much lower: ***4.2 percentage points***!
 .pull-left[
 
 
-```r
+``` r
 promotions %&gt;%
        left_join(promotions_shuffled %&gt;%
                    rename(shuffled_gender = gender)) %&gt;%
@@ -852,7 +852,7 @@ where `\(p_m =\)` promotion rate of men, and `\(p_f =\)` promotion rate of women
 
 # Hypothesis Test Notation and Definitions
 
-&gt; ### ***p-value:*** probability of observing a test statistic *just as or more extreme* than the one we obtained, assuming the null hypothesis `\(H_0\)` is true. 🤔
+&gt; ### ***p-value:*** probability of observing a test statistic *just as or more extreme* than the one we obtained, assuming the null hypothesis `\(H_0\)` is true. 
 
 --
 
@@ -920,7 +920,7 @@ The shaded area correponds to the p-value!
 --
 
 
-```r
+``` r
 p_value &lt;- mean(null_distribution$stat &gt;= 0.292)
 p_value
 ```
@@ -1000,7 +1000,7 @@ In hypothesis testing, there are ***two types of errors***:
 
 --
 
-* The answer in the next episode of *Introduction to Econometrics with R*! 🐵
+* The answer in the next episode of *Introduction to Econometrics with R*! 
 
 ---
 
@@ -1032,7 +1032,7 @@ To the amazing [moderndive](https://moderndive.com/) team!
 
 .pull-left[
 
-```r
+``` r
 null_distribution &lt;- promotions %&gt;% 
   # takes formula, defines success
   specify(formula = decision ~ gender,
@@ -1086,10 +1086,10 @@ background-position: 9% 19%
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script src="../js/ru_xaringan.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
