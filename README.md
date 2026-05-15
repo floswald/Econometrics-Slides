@@ -63,9 +63,11 @@ Differences-in-differences:
 
 If you want to write your thesis with me, then you need to follow those rules:
 
+
 1. you come up with the topic
 2. Your topic has to make use of at least one of the methods we touched upon in this course. It has to involve *data* either as real observational data or created in a simulation experiment.
 3. You produce your thesis with [Rmarkdown](https://rmarkdown.rstudio.com/docs/index.html), embedding code, text and output in a single document.
+4. Your thesis has to be in English.
 
 ## Legal
 
