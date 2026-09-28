@@ -5,6 +5,8 @@
 
 ## Schedule
 
+**schedule to be updated! please check your uni calendar**
+
 A typical week will look as follows:
 
 |Day  | Time  | Location |
