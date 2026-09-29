@@ -1,5 +1,5 @@
 ---
-title: "Econometrics"
+title: "Econometrics - Canale B"
 subtitle: "Introduction"
 author: "Florian Oswald"
 date: "UniTo ESOMAS </br> `r Sys.Date()`"
@@ -68,7 +68,10 @@ countdown(
 
 * I work on urban, macro and IO topics.
     
-* Our TA this year is [Kacper Krasowski](https://kacperkrasowski.github.io), PhD student at Collegio Carlo Alberto.
+* We have 3 TAs this year:
+    1. Matteo Morgia: matteomaria.morgia@unito.it
+    2. Giovanni Mannucci: giovanni.mannucci@unito.it
+    3. Nicola Foglia: nicola.foglia@unito.it
 
 ]
 
@@ -370,14 +373,9 @@ Questions like
 * *I don't understand x*
 * *y does not work for me*
 * *when is the exam*
-* *can I come to office hours?"*
 
 will *only* be answered on Slack.
 
-All other questions via email to
-
-`florian.oswald@unito.it` or
-`kacper.krasowski@carloalberto.org`
 
 What is *Slack*??
 
@@ -395,7 +393,7 @@ What is *Slack*??
 
 # Your To-Do List for Tomorrow
 
-1. Sign up on moodle: [https://elearning.unito.it/sme/course/view.php?id=8568](https://elearning.unito.it/sme/course/view.php?id=8568)
+1. Sign up on moodle: [https://elearning.unito.it/sme/course/view.php?id=9379](https://elearning.unito.it/sme/course/view.php?id=9379)
 
 2. From moodle, sign up on slack
 
@@ -489,6 +487,26 @@ class: title-slide-section-red, middle
 layout: true
 
 <div class="my-footer"><img src="../img/logo/unito-shield.png" style="height: 60px;"/></div> 
+
+---
+
+# Why Software at all?
+
+1. Econometrics is about **Data**.
+
+--
+
+2. **Data** is analysed with **software**.
+
+--
+
+3. Econometrics $\mapsto$ Software.
+
+--
+
+4. We will study core concepts using traditional methods (algebra, statistics etc), but we will rely heavily on your computer to generate intuition.
+
+
 
 ---
 
@@ -908,6 +926,25 @@ help(lm)   # help() is equivalent
 In practice:
 ![Learning R](chapter_intro_files/figure-html/learning_path.png)
 ]
+
+
+---
+
+# AI
+
+1. Are you allowed to use AI in this course? Yes.
+
+--
+
+2. Are you allowed to use AI in the exam? No.
+
+--
+
+3. So, you want to use AI in order to *help you understand better*. You should ask your AI to explain concepts you did not understand, not just to give you *the correct answer*.
+
+--
+
+4. In our quizzes, we'll try to flag questions where you *should* use AI, and ones where we you should *not* do so.
 
 ---
 
