@@ -69,7 +69,7 @@ sessions touched.
 | 10 | Tue | 1 Dec 2026 | 14:00-15:15, 15:30-16:30 | Aula Magna SME | in person | 3 |
 | 10 | Wed | 2 Dec 2026 | 11:15-12:30, 12:45-13:45 | Aula Magna SME | **make-up (for 7 Oct)** | 3 |
 
-**Total delivered/scheduled: 72 ah required — 18 remote (25%), 54 in person (75%).**
-7 Oct session (3 ah, struck through above) cancelled and made up on 2 Dec 2026
-(Wed, in person, +3 ah). Online share of the 72 ah required stays **18 ah = 25%**;
-in person **54 ah = 75%**. The 2 Dec make-up is extra, outside the 72 ah count.
+**Total: 72 ah required — 18 remote (25%), 54 in person (75%).**
+7 Oct session (3 ah, struck through above) is cancelled and must be held on
+2 Dec 2026 (Wed, in person, 3 ah) to reach 72 ah: 69 ah from the remaining
+original sessions + 3 ah make-up = 72 ah.
