@@ -91,11 +91,11 @@ $$ y_i = \beta_0 + \beta_1 x_i + u_i $$
 
 and our sample-based estimated regression model as
 
-$$ y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i $$
+$$ y_i = b_0 + b_1 x_i + e_i $$
 
 An estimated regression model produces estimates for each observation:
 
-$$ \hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i $$
+$$ \hat{y}_i = b_0 + b_1 x_i $$
 
 which gives us the _best-fit_ line through our dataset. 
 
@@ -462,7 +462,7 @@ We can estimate a regression line in `R` (`lm(y ~ x, my_data)`) and `stata` (`re
 
 A few slides back:
 
-> $$ \hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i $$
+> $$ \hat{y}_i = b_0 + b_1 x_i $$
 > which gives us the *best-fit* line through our dataset.
 
 But what do we mean by "best-fit line"?
@@ -508,7 +508,7 @@ theme_empty
 ---
 count: false
 
-For any line $\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)$
+For any line $\left(\hat{y} = b_0 + b_1 x\right)$
 
 ```{R, vs lines 2, echo = F, fig.height = 4}
 # Define a function
@@ -527,7 +527,7 @@ theme_empty
 ---
 count: false
 
-For any line $\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
+For any line $\left(\hat{y} = b_0 + b_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
 
 ```{R, ols vs lines 3, echo = F, fig.height = 4}
 # Define a function
@@ -546,7 +546,7 @@ theme_empty
 ---
 count: false
 
-For any line $\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
+For any line $\left(\hat{y} = b_0 + b_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
 
 ```{R, ols vs lines 4, echo = F, fig.height = 4}
 # Define a function
@@ -565,7 +565,7 @@ theme_empty
 ---
 count: false
 
-For any line $\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
+For any line $\left(\hat{y} = b_0 + b_1 x\right)$, we can calculate errors: $e_i = y_i - \hat{y}_i$
 
 ```{R, ols vs lines 5, echo = F, fig.height = 4}
 # Define a function
@@ -604,7 +604,7 @@ theme_empty
 ---
 count: false
 
-The OLS estimate is the combination of $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize SSE.
+The OLS estimate is the combination of $b_0$ and $b_1$ that minimize SSE.
 
 ```{R, ols vs lines 7, echo = F, fig.height = 4}
 # Define a function
@@ -639,9 +639,9 @@ layout: true
 
 ---
 
-In simple linear regression, the OLS estimator comes from choosing the $\hat{\beta}_0$ and $\hat{\beta}_1$ that minimize the sum of squared errors (SSE), _i.e._,
+In simple linear regression, the OLS estimator comes from choosing the $b_0$ and $b_1$ that minimize the sum of squared errors (SSE), _i.e._,
 
-$$ \min_{\hat{\beta}_0,\, \hat{\beta}_1} \text{SSE} $$
+$$ \min_{b_0,\, b_1} \text{SSE} $$
 
 --
 
@@ -649,8 +649,8 @@ but we already know $\text{SSE} = \sum_i e_i^2$. Now use the definitions of $e_i
 
 $$
 \begin{aligned}
-  e_i^2 &= \left( y_i - \hat{y}_i \right)^2 = \left( y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i \right)^2 \\
-  &= y_i^2 - 2 y_i \hat{\beta}_0 - 2 y_i \hat{\beta}_1 x_i + \hat{\beta}_0^2 + 2 \hat{\beta}_0 \hat{\beta}_1 x_i + \hat{\beta}_1^2 x_i^2
+  e_i^2 &= \left( y_i - \hat{y}_i \right)^2 = \left( y_i - b_0 - b_1 x_i \right)^2 \\
+  &= y_i^2 - 2 y_i b_0 - 2 y_i b_1 x_i + b_0^2 + 2 b_0 b_1 x_i + b_1^2 x_i^2
 \end{aligned}
 $$
 
@@ -683,11 +683,11 @@ We skipped the maths.
 
 We now have the OLS estimators for the slope
 
-$$ \hat{\beta}_1 = \dfrac{\sum_i (x_i - \overline{x})(y_i - \overline{y})}{\sum_i (x_i - \overline{x})^2} $$
+$$ b_1 = \dfrac{\sum_i (x_i - \overline{x})(y_i - \overline{y})}{\sum_i (x_i - \overline{x})^2} $$
 
 and the intercept
 
-$$ \hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x} $$
+$$ b_0 = \overline{y} - b_1 \overline{x} $$
 
 Remember that *those* two formulae are amongst the very few ones from the intro course that you should know by heart! ❤️
 
@@ -813,7 +813,7 @@ On average (after *many* samples), does the estimator tend toward the correct va
 
 **More formally:** Does the mean of estimator's distribution equal the parameter it estimates?
 
-$$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] - \beta $$
+$$ \mathop{\text{Bias}}_\beta \left( b \right) = \mathop{\boldsymbol{E}}\left[ b \right] - \beta $$
 
 ---
 
@@ -821,7 +821,7 @@ $$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E
 
 .pull-left[
 
-**Unbiased estimator:** $\mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] = \beta$
+**Unbiased estimator:** $\mathop{\boldsymbol{E}}\left[ b \right] = \beta$
 
 ```{R, unbiased pdf, echo = F}
 ggplot(data = tmp, aes(x, y)) +
@@ -839,7 +839,7 @@ theme(axis.text.x = element_text(size = 40))
 
 .pull-right[
 
-**Biased estimator:** $\mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] \neq \beta$
+**Biased estimator:** $\mathop{\boldsymbol{E}}\left[ b \right] \neq \beta$
 
 ```{R, biased pdf, echo = F}
 ggplot(data = tmp, aes(x, y)) +
@@ -859,7 +859,7 @@ theme(axis.text.x = element_text(size = 40))
 
 The central tendencies (means) of competing distributions are not the only things that matter. We also care about the **variance** of an estimator.
 
-$$ \mathop{\text{Var}} \left( \hat{\beta} \right) = \mathop{\boldsymbol{E}}\left[ \left( \hat{\beta} - \mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] \right)^2 \right] $$
+$$ \mathop{\text{Var}} \left( b \right) = \mathop{\boldsymbol{E}}\left[ \left( b - \mathop{\boldsymbol{E}}\left[ b \right] \right)^2 \right] $$
 
 Lower variance estimators mean we get estimates closer to the mean in each sample.
 

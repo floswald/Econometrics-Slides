@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald
 ]
 .date[
-### UniTo ESOMAS 2025-11-19
+### UniTo ESOMAS 2026-11-18
 ]
 
 ---
@@ -88,7 +88,7 @@ layout: true
 --
 
 .right-wide[
-&lt;img src="star1-1.png" width="1792" style="display: block; margin: auto;" /&gt;
+&lt;img src="star1-1.png" alt="" width="1792" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -105,7 +105,7 @@ Let's augment our model with more variables:
 # Spot the Difference 🕵️
 
 
-&lt;img src="recap2_files/figure-html/dag1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/dag1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -189,7 +189,7 @@ $$ \text{Pay}_i = 20 + 0.5 \times \text{School}_i + 10 \times \text{Male}_i + u_
 
 Our regression model that suffers from omitted-variable bias:
 
-$$ \text{Pay}_i = \hat{\beta}_0 + \hat{\beta}_1 \times \text{School}_i + e_i $$
+$$ \text{Pay}_i = b_0 + b_1 \times \text{School}_i + e_i $$
 
 Finally, imagine that women, on average, receive more schooling than men.
 
@@ -202,30 +202,30 @@ layout: true
 
 The relationship between pay and schooling.
 
-&lt;img src="recap2_files/figure-html/plot ovb 1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/plot ovb 1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 ---
 count: false
 Biased regression estimate: `\(\widehat{\text{Pay}}_i = 31.3 + -0.9 \times \text{School}_i\)`
 
-&lt;img src="recap2_files/figure-html/plot ovb 2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/plot ovb 2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 Recalling the omitted variable: Gender **female** and .hi-slate[male]
 
-&lt;img src="recap2_files/figure-html/plot ovb 3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/plot ovb 3-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 Recalling the omitted variable: Gender **female** and .hi-slate[male]
 
-&lt;img src="recap2_files/figure-html/plot ovb 4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/plot ovb 4-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 Unbiased regression estimate: `\(\widehat{\text{Pay}}_i = 20.9 + 0.4 \times \text{School}_i + 9.1 \times \text{Male}_i\)`
 
-&lt;img src="recap2_files/figure-html/plot ovb 5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/plot ovb 5-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -353,7 +353,7 @@ $$
 
 --
 
-**Note:** If there are no other variables to condition on, then `\(\hat{\beta}_1\)` equals the difference in group means, _e.g._, `\(\overline{x}_\text{Female} - \overline{x}_\text{Male}\)`.
+**Note:** If there are no other variables to condition on, then `\(b_1\)` equals the difference in group means, _e.g._, `\(\overline{x}_\text{Female} - \overline{x}_\text{Male}\)`.
 
 --
 
@@ -367,7 +367,7 @@ $$
 
 
 
-&lt;img src="recap2_files/figure-html/dat plot 1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/dat plot 1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Interpreting coefficients
@@ -375,7 +375,7 @@ $$
 
 `\(y_i = \beta_0 + \beta_1 x_i + u_i\)` for binary variable `\(x_i = \{\color{#314f4f}{0}, \, \color{#d90502}{1}\}\)`
 
-&lt;img src="recap2_files/figure-html/dat plot 2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/dat plot 2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 ---
 class: inverse
 
@@ -423,7 +423,7 @@ The model where schooling has the same effect for everyone (**&lt;font color="#e
 
 
 
-&lt;img src="recap2_files/figure-html/int plot 1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/int plot 1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Interpreting coefficients
@@ -431,7 +431,7 @@ The model where schooling has the same effect for everyone (**&lt;font color="#e
 
 The model where schooling's effect can differ by gender (**&lt;font color="#e64173"&gt;F&lt;/font&gt;** and **&lt;font color="#314f4f"&gt;M&lt;/font&gt;**):
 
-&lt;img src="recap2_files/figure-html/int plot 2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/int plot 2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # Interpreting coefficients
@@ -512,7 +512,7 @@ lm(log(price) ~ bdrms, data = hprice1) %&gt;% tidy()
 ]
 
 .pull-right[
-&lt;img src="recap2_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/unnamed-chunk-3-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -555,7 +555,7 @@ What about that **approximation** part?
 
 .pull-right[
 
-&lt;img src="recap2_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/unnamed-chunk-4-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -757,7 +757,7 @@ Up to this point, we know OLS has some nice properties, and we know how to estim
 Our current workflow:
 - Get data (points with `\(x\)` and `\(y\)` values)
 - Regress `\(y\)` on `\(x\)`
-- Plot the OLS line (_i.e._, `\(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1\)`)
+- Plot the OLS line (_i.e._, `\(\hat{y} = b_0 + b_1\)`)
 - Done?
 
 But how do we actually **learn** something from this exercise?
@@ -779,7 +779,7 @@ This is related to the chapters on:
 
 But how do we actually **learn** something from this exercise?
 
-- Based upon our value of `\(\hat{\beta}_1\)`, can we rule out previously hypothesized values?
+- Based upon our value of `\(b_1\)`, can we rule out previously hypothesized values?
 - How confident should we be in the precision of our estimates?
 - How well does our model explain the variation we observe in `\(y\)`?
 
@@ -818,9 +818,9 @@ where `\(k\)` gives the number of slope terms and intercepts that we estimate (_
 
 ---
 
-We know that the variance of `\(\hat{\beta}_1\)` (for simple linear regression) is
+We know that the variance of `\(b_1\)` (for simple linear regression) is
 
-`$$\mathop{\text{Var}} \left( \hat{\beta}_1 \right) = \frac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}$$`
+`$$\mathop{\text{Var}} \left( b_1 \right) = \frac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}$$`
 
 which shows that the variance of our slope estimator
 
@@ -829,9 +829,9 @@ which shows that the variance of our slope estimator
 
 ---
 
-*More common:* The **standard error** of `\(\hat{\beta}_1\)`
+*More common:* The **standard error** of `\(b_1\)`
 
-$$ \mathop{\hat{\text{SE}}} \left( \hat{\beta}_1 \right) = \sqrt{\dfrac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}} $$
+$$ \mathop{\hat{\text{SE}}} \left( b_1 \right) = \sqrt{\dfrac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}} $$
 
 *Recall:* The standard error of an estimator is the standard deviation of the estimator's distribution.
 
@@ -851,9 +851,9 @@ Standard error output is standard in `R`'s `lm`:
 ```
 ---
 
-We use the standard error of `\(\hat{\beta}_1\)`, along with `\(\hat{\beta}_1\)` itself, to learn about the parameter `\(\beta_1\)`.
+We use the standard error of `\(b_1\)`, along with `\(b_1\)` itself, to learn about the parameter `\(\beta_1\)`.
 
-After deriving the distribution of `\(\hat{\beta}_1\)`,&lt;sup&gt;.red[†]&lt;/sup&gt; we have two (related) options for formal statistical inference (learning) about our unknown parameter `\(\beta_1\)`:
+After deriving the distribution of `\(b_1\)`,&lt;sup&gt;.red[†]&lt;/sup&gt; we have two (related) options for formal statistical inference (learning) about our unknown parameter `\(\beta_1\)`:
 
 - **Confidence intervals:** Use the estimate and its standard error to create an interval that, when repeated, will generally&lt;sup&gt;.red[††]&lt;/sup&gt; contain the true parameter.
 
@@ -871,7 +871,7 @@ layout: true
 ## Confidence intervals
 
 We construct `\((1-\alpha)\)`-level confidence intervals for `\(\beta_1\)`
-$$ \hat{\beta}\_1 \pm t\_{\alpha/2,\text{df}} \, \mathop{\hat{\text{SE}}} \left( \hat{\beta}\_1 \right) $$
+$$ b\_1 \pm t\_{\alpha/2,\text{df}} \, \mathop{\hat{\text{SE}}} \left( b\_1 \right) $$
 
 ---
 
@@ -879,9 +879,9 @@ $$ \hat{\beta}\_1 \pm t\_{\alpha/2,\text{df}} \, \mathop{\hat{\text{SE}}} \left(
 
 ---
 
-For example, 100 obs., two coefficients (_i.e._, `\(\hat{\beta}_0\)` and `\(\hat{\beta}_1 \implies k = 2\)`), and `\(\alpha = 0.05\)` (for a 95% confidence interval) gives us `\(t_{0.025,\,98} = -1.98\)`
+For example, 100 obs., two coefficients (_i.e._, `\(b_0\)` and `\(b_1 \implies k = 2\)`), and `\(\alpha = 0.05\)` (for a 95% confidence interval) gives us `\(t_{0.025,\,98} = -1.98\)`
 
-&lt;img src="recap2_files/figure-html/t dist-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/t dist-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -930,7 +930,7 @@ Now back to our simulation...
 
 We drew 10,000 samples (each of size `\(n = 30\)`) from our population and estimated our regression model for each of these simulations:
 
-$$ y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i $$
+$$ y_i = b_0 + b_1 x_i + e_i $$
 &lt;center&gt;(repeated 10,000 times)&lt;/center&gt;
 
 Now, let's estimate 95% confidence intervals for each of these intervals...
@@ -941,12 +941,12 @@ Now, let's estimate 95% confidence intervals for each of these intervals...
 
 .left-wide[
 
-&lt;img src="recap2_files/figure-html/simulation ci-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap2_files/figure-html/simulation ci-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ]
 
 .right-thin[
-**From our previous simulation:** 97.8% of our 95% confidences intervals contain the true parameter value of `\(\beta_1\)`.
+**From our previous simulation:** 97.7% of our 95% confidences intervals contain the true parameter value of `\(\beta_1\)`.
 
 That's a **probabilistic statement**:
 
@@ -989,7 +989,7 @@ While uncertainty certainly exists, we can still build *reliable* statistical te
 
 From OLS's properties, we can show that the test statistic
 
-$$ t_\text{stat} = \dfrac{\hat{\beta}_1 - c}{\mathop{\hat{\text{SE}}} \left( \hat{\beta}_1 \right)} $$
+$$ t_\text{stat} = \dfrac{b_1 - c}{\mathop{\hat{\text{SE}}} \left( b_1 \right)} $$
 
 follows the `\(t\)` distribution with `\(n-k\)` degrees of freedom.
 

@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald
 ]
 .date[
-### UniTo ESOMAS 2025-11-18
+### UniTo ESOMAS 2026-11-18
 ]
 
 ---
@@ -61,11 +61,11 @@ $$ y_i = \beta_0 + \beta_1 x_i + u_i $$
 
 and our sample-based estimated regression model as
 
-$$ y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i $$
+$$ y_i = b_0 + b_1 x_i + e_i $$
 
 An estimated regression model produces estimates for each observation:
 
-$$ \hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i $$
+$$ \hat{y}_i = b_0 + b_1 x_i $$
 
 which gives us the _best-fit_ line through our dataset. 
 
@@ -121,7 +121,7 @@ layout: true
 
 .pull-left[
 
-&lt;img src="recap1_files/figure-html/pop1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/pop1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[**Population**]
 
@@ -131,7 +131,7 @@ layout: true
 
 .pull-right[
 
-&lt;img src="recap1_files/figure-html/scatter1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/scatter1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[**Population relationship**]
 
@@ -146,7 +146,7 @@ $$ y_i = \beta_0 + \beta_1 x_i + u_i $$
 
 .pull-left[
 
-&lt;img src="recap1_files/figure-html/sample1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[**Sample 1:** 30 random individuals]
 
@@ -156,7 +156,7 @@ $$ y_i = \beta_0 + \beta_1 x_i + u_i $$
 
 .pull-right[
 
-&lt;img src="recap1_files/figure-html/sample1 scatter-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample1 scatter-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[
 
@@ -177,7 +177,7 @@ count: false
 
 .pull-left[
 
-&lt;img src="recap1_files/figure-html/sample2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[**Sample 2:** 30 random individuals]
 
@@ -185,7 +185,7 @@ count: false
 
 .pull-right[
 
-&lt;img src="recap1_files/figure-html/sample2 scatter-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample2 scatter-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[
 
@@ -205,7 +205,7 @@ count: false
 
 .pull-left[
 
-&lt;img src="recap1_files/figure-html/sample3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample3-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[**Sample 3:** 30 random individuals]
 
@@ -213,7 +213,7 @@ count: false
 
 .pull-right[
 
-&lt;img src="recap1_files/figure-html/sample3 scatter-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/sample3 scatter-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 .center[
 
@@ -305,7 +305,7 @@ We can estimate a regression line in `R` (`lm(y ~ x, my_data)`) and `stata` (`re
 
 A few slides back:
 
-&gt; $$ \hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i $$
+&gt; $$ \hat{y}_i = b_0 + b_1 x_i $$
 &gt; which gives us the *best-fit* line through our dataset.
 
 But what do we mean by "best-fit line"?
@@ -342,49 +342,49 @@ layout: true
 
 Let's consider the dataset we previously generated.
 
-&lt;img src="recap1_files/figure-html/ols vs lines 1-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ols vs lines 1-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 
-For any line `\(\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)\)`
+For any line `\(\left(\hat{y} = b_0 + b_1 x\right)\)`
 
-&lt;img src="recap1_files/figure-html/vs lines 2-1.svg" style="display: block; margin: auto;" /&gt;
-
----
-count: false
-
-For any line `\(\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
-
-&lt;img src="recap1_files/figure-html/ols vs lines 3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/vs lines 2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 
-For any line `\(\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
+For any line `\(\left(\hat{y} = b_0 + b_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
 
-&lt;img src="recap1_files/figure-html/ols vs lines 4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ols vs lines 3-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 
-For any line `\(\left(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
+For any line `\(\left(\hat{y} = b_0 + b_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
 
-&lt;img src="recap1_files/figure-html/ols vs lines 5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ols vs lines 4-1.svg" alt="" style="display: block; margin: auto;" /&gt;
+
+---
+count: false
+
+For any line `\(\left(\hat{y} = b_0 + b_1 x\right)\)`, we can calculate errors: `\(e_i = y_i - \hat{y}_i\)`
+
+&lt;img src="recap1_files/figure-html/ols vs lines 5-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 
 SSE squares the errors `\(\left(\sum e_i^2\right)\)`: bigger errors get bigger penalties.
 
-&lt;img src="recap1_files/figure-html/ols vs lines 6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ols vs lines 6-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 count: false
 
-The OLS estimate is the combination of `\(\hat{\beta}_0\)` and `\(\hat{\beta}_1\)` that minimize SSE.
+The OLS estimate is the combination of `\(b_0\)` and `\(b_1\)` that minimize SSE.
 
-&lt;img src="recap1_files/figure-html/ols vs lines 7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ols vs lines 7-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 layout: false
@@ -405,9 +405,9 @@ layout: true
 
 ---
 
-In simple linear regression, the OLS estimator comes from choosing the `\(\hat{\beta}_0\)` and `\(\hat{\beta}_1\)` that minimize the sum of squared errors (SSE), _i.e._,
+In simple linear regression, the OLS estimator comes from choosing the `\(b_0\)` and `\(b_1\)` that minimize the sum of squared errors (SSE), _i.e._,
 
-$$ \min_{\hat{\beta}_0,\, \hat{\beta}_1} \text{SSE} $$
+$$ \min_{b_0,\, b_1} \text{SSE} $$
 
 --
 
@@ -415,8 +415,8 @@ but we already know `\(\text{SSE} = \sum_i e_i^2\)`. Now use the definitions of 
 
 $$
 `\begin{aligned}
-  e_i^2 &amp;= \left( y_i - \hat{y}_i \right)^2 = \left( y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i \right)^2 \\
-  &amp;= y_i^2 - 2 y_i \hat{\beta}_0 - 2 y_i \hat{\beta}_1 x_i + \hat{\beta}_0^2 + 2 \hat{\beta}_0 \hat{\beta}_1 x_i + \hat{\beta}_1^2 x_i^2
+  e_i^2 &amp;= \left( y_i - \hat{y}_i \right)^2 = \left( y_i - b_0 - b_1 x_i \right)^2 \\
+  &amp;= y_i^2 - 2 y_i b_0 - 2 y_i b_1 x_i + b_0^2 + 2 b_0 b_1 x_i + b_1^2 x_i^2
 \end{aligned}`
 $$
 
@@ -436,7 +436,7 @@ layout: false
 ScPoApps::launchApp("SSR_cone")
 ```
 
-&lt;img src="../img/photos/SSR_cone.png" width="3363" style="display: block; margin: auto;" /&gt;
+&lt;img src="../img/photos/SSR_cone.png" alt="" width="3363" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -448,11 +448,11 @@ We skipped the maths.
 
 We now have the OLS estimators for the slope
 
-$$ \hat{\beta}_1 = \dfrac{\sum_i (x_i - \overline{x})(y_i - \overline{y})}{\sum_i (x_i - \overline{x})^2} $$
+$$ b_1 = \dfrac{\sum_i (x_i - \overline{x})(y_i - \overline{y})}{\sum_i (x_i - \overline{x})^2} $$
 
 and the intercept
 
-$$ \hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x} $$
+$$ b_0 = \overline{y} - b_1 \overline{x} $$
 
 Remember that *those* two formulae are amongst the very few ones from the intro course that you should know by heart! ❤️
 
@@ -494,7 +494,7 @@ $$
 
 The probability a standard normal random variable takes on a value between -2 and 0: `\(\mathop{\text{P}}\left(-2 \leq X \leq 0\right) = 0.48\)`
 
-&lt;img src="recap1_files/figure-html/example: pdf-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/example: pdf-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -502,7 +502,7 @@ The probability a standard normal random variable takes on a value between -2 an
 
 The probability a standard normal random variable takes on a value between -1.96 and 1.96: `\(\mathop{\text{P}}\left(-1.96 \leq X \leq 1.96\right) = 0.95\)`
 
-&lt;img src="recap1_files/figure-html/example: pdf 2-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/example: pdf 2-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -510,13 +510,13 @@ The probability a standard normal random variable takes on a value between -1.96
 
 The probability a standard normal random variable takes on a value beyond 2: `\(\mathop{\text{P}}\left(X &gt; 2\right) = 0.023\)`
 
-&lt;img src="recap1_files/figure-html/example: pdf 3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/example: pdf 3-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
 Imagine we are trying to estimate an unknown parameter `\(\beta\)`, and we know the distributions of three competing estimators. Which one would we want? How would we decide?
 
-&lt;img src="recap1_files/figure-html/competing pdfs-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/competing pdfs-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -530,7 +530,7 @@ On average (after *many* samples), does the estimator tend toward the correct va
 
 **More formally:** Does the mean of estimator's distribution equal the parameter it estimates?
 
-$$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] - \beta $$
+$$ \mathop{\text{Bias}}_\beta \left( b \right) = \mathop{\boldsymbol{E}}\left[ b \right] - \beta $$
 
 ---
 
@@ -538,9 +538,9 @@ $$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E
 
 .pull-left[
 
-**Unbiased estimator:** `\(\mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] = \beta\)`
+**Unbiased estimator:** `\(\mathop{\boldsymbol{E}}\left[ b \right] = \beta\)`
 
-&lt;img src="recap1_files/figure-html/unbiased pdf-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/unbiased pdf-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -548,9 +548,9 @@ $$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E
 
 .pull-right[
 
-**Biased estimator:** `\(\mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] \neq \beta\)`
+**Biased estimator:** `\(\mathop{\boldsymbol{E}}\left[ b \right] \neq \beta\)`
 
-&lt;img src="recap1_files/figure-html/biased pdf-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/biased pdf-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -560,7 +560,7 @@ $$ \mathop{\text{Bias}}_\beta \left( \hat{\beta} \right) = \mathop{\boldsymbol{E
 
 The central tendencies (means) of competing distributions are not the only things that matter. We also care about the **variance** of an estimator.
 
-$$ \mathop{\text{Var}} \left( \hat{\beta} \right) = \mathop{\boldsymbol{E}}\left[ \left( \hat{\beta} - \mathop{\boldsymbol{E}}\left[ \hat{\beta} \right] \right)^2 \right] $$
+$$ \mathop{\text{Var}} \left( b \right) = \mathop{\boldsymbol{E}}\left[ \left( b - \mathop{\boldsymbol{E}}\left[ b \right] \right)^2 \right] $$
 
 Lower variance estimators mean we get estimates closer to the mean in each sample.
 
@@ -569,7 +569,7 @@ count: false
 
 **Answer two: Variance.**
 
-&lt;img src="recap1_files/figure-html/variance pdf-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/variance pdf-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -588,7 +588,7 @@ layout: false
 
 # The bias-variance tradeoff.
 
-&lt;img src="recap1_files/figure-html/variance bias-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/variance bias-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 # OLS: Assumptions and properties
@@ -669,13 +669,13 @@ class: clear
 
 Valid exogeneity, _i.e._, `\(\mathop{E}\left[ u | X \right] = 0\)`
 
-&lt;img src="recap1_files/figure-html/ex_good_exog-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ex_good_exog-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 ---
 class: clear
 
 Invalid exogeneity, _i.e._, `\(\mathop{E}\left[ u | X \right] \neq 0\)`
 
-&lt;img src="recap1_files/figure-html/ex_bad_exog-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="recap1_files/figure-html/ex_bad_exog-1.svg" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 layout: false

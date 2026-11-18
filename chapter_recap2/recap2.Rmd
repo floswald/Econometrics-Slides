@@ -277,7 +277,7 @@ $$ \text{Pay}_i = `r beta0` + `r beta1` \times \text{School}_i + `r beta2` \time
 
 Our regression model that suffers from omitted-variable bias:
 
-$$ \text{Pay}_i = \hat{\beta}_0 + \hat{\beta}_1 \times \text{School}_i + e_i $$
+$$ \text{Pay}_i = b_0 + b_1 \times \text{School}_i + e_i $$
 
 Finally, imagine that women, on average, receive more schooling than men.
 
@@ -531,7 +531,7 @@ $$
 
 --
 
-**Note:** If there are no other variables to condition on, then $\hat{\beta}_1$ equals the difference in group means, _e.g._, $\overline{x}_\text{Female} - \overline{x}_\text{Male}$.
+**Note:** If there are no other variables to condition on, then $b_1$ equals the difference in group means, _e.g._, $\overline{x}_\text{Female} - \overline{x}_\text{Male}$.
 
 --
 
@@ -809,7 +809,7 @@ Consider the log-linear model
 
 $$ \log(y) = \beta_0 + \beta_1 \, x + u $$
 
-and differentiate
+and take total differential
 
 $$ \dfrac{dy}{y} = \beta_1 dx $$
 
@@ -913,7 +913,7 @@ Consider the log-log model
 
 $$ \log(y) = \beta_0 + \beta_1 \, \log(x) + u $$
 
-and differentiate
+and take total differential
 
 $$ \dfrac{dy}{y} = \beta_1 \dfrac{dx}{x} $$
 
@@ -1014,7 +1014,7 @@ Up to this point, we know OLS has some nice properties, and we know how to estim
 Our current workflow:
 - Get data (points with $x$ and $y$ values)
 - Regress $y$ on $x$
-- Plot the OLS line (_i.e._, $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$)
+- Plot the OLS line (_i.e._, $\hat{y} = b_0 + b_1$)
 - Done?
 
 But how do we actually **learn** something from this exercise?
@@ -1036,7 +1036,7 @@ This is related to the chapters on:
 
 But how do we actually **learn** something from this exercise?
 
-- Based upon our value of $\hat{\beta}_1$, can we rule out previously hypothesized values?
+- Based upon our value of $b_1$, can we rule out previously hypothesized values?
 - How confident should we be in the precision of our estimates?
 - How well does our model explain the variation we observe in $y$?
 
@@ -1075,9 +1075,9 @@ $s^2$ is an unbiased estimator of $\sigma^2$.
 
 ---
 
-We know that the variance of $\hat{\beta}_1$ (for simple linear regression) is
+We know that the variance of $b_1$ (for simple linear regression) is
 
-$$\mathop{\text{Var}} \left( \hat{\beta}_1 \right) = \frac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}$$
+$$\mathop{\text{Var}} \left( b_1 \right) = \frac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}$$
 
 which shows that the variance of our slope estimator
 
@@ -1086,9 +1086,9 @@ which shows that the variance of our slope estimator
 
 ---
 
-*More common:* The **standard error** of $\hat{\beta}_1$
+*More common:* The **standard error** of $b_1$
 
-$$ \mathop{\hat{\text{SE}}} \left( \hat{\beta}_1 \right) = \sqrt{\dfrac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}} $$
+$$ \mathop{\hat{\text{SE}}} \left( b_1 \right) = \sqrt{\dfrac{s^2}{\sum_i \left( x_i - \overline{x} \right)^2}} $$
 
 *Recall:* The standard error of an estimator is the standard deviation of the estimator's distribution.
 
@@ -1131,9 +1131,9 @@ tidy(lm(y ~ x, pop_df))
 ```
 ---
 
-We use the standard error of $\hat{\beta}_1$, along with $\hat{\beta}_1$ itself, to learn about the parameter $\beta_1$.
+We use the standard error of $b_1$, along with $b_1$ itself, to learn about the parameter $\beta_1$.
 
-After deriving the distribution of $\hat{\beta}_1$,<sup>.red[†]</sup> we have two (related) options for formal statistical inference (learning) about our unknown parameter $\beta_1$:
+After deriving the distribution of $b_1$,<sup>.red[†]</sup> we have two (related) options for formal statistical inference (learning) about our unknown parameter $\beta_1$:
 
 - **Confidence intervals:** Use the estimate and its standard error to create an interval that, when repeated, will generally<sup>.red[††]</sup> contain the true parameter.
 
@@ -1151,7 +1151,7 @@ layout: true
 ## Confidence intervals
 
 We construct $(1-\alpha)$-level confidence intervals for $\beta_1$
-$$ \hat{\beta}\_1 \pm t\_{\alpha/2,\text{df}} \, \mathop{\hat{\text{SE}}} \left( \hat{\beta}\_1 \right) $$
+$$ b\_1 \pm t\_{\alpha/2,\text{df}} \, \mathop{\hat{\text{SE}}} \left( b\_1 \right) $$
 
 ---
 
@@ -1159,7 +1159,7 @@ $t_{\alpha/2,\text{df}}$ denotes the $\alpha/2$ quantile of a $t$ dist. with $n-
 
 ---
 
-For example, 100 obs., two coefficients (_i.e._, $\hat{\beta}_0$ and $\hat{\beta}_1 \implies k = 2$), and $\alpha = 0.05$ (for a 95% confidence interval) gives us $t_{0.025,\,98} = `r qt(0.025, 98) %>% round(2)`$
+For example, 100 obs., two coefficients (_i.e._, $b_0$ and $b_1 \implies k = 2$), and $\alpha = 0.05$ (for a 95% confidence interval) gives us $t_{0.025,\,98} = `r qt(0.025, 98) %>% round(2)`$
 
 ```{R, t dist, echo = F, fig.height = 2}
 d6 <- tibble(x = seq(-4, 4, 0.01), y = dt(x, df = 98)) %>%
@@ -1211,7 +1211,7 @@ Now back to our simulation...
 
 We drew 10,000 samples (each of size $n = 30$) from our population and estimated our regression model for each of these simulations:
 
-$$ y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i $$
+$$ y_i = b_0 + b_1 x_i + e_i $$
 <center>(repeated 10,000 times)</center>
 
 Now, let's estimate 95% confidence intervals for each of these intervals...
@@ -1295,7 +1295,7 @@ While uncertainty certainly exists, we can still build *reliable* statistical te
 
 From OLS's properties, we can show that the test statistic
 
-$$ t_\text{stat} = \dfrac{\hat{\beta}_1 - c}{\mathop{\hat{\text{SE}}} \left( \hat{\beta}_1 \right)} $$
+$$ t_\text{stat} = \dfrac{b_1 - c}{\mathop{\hat{\text{SE}}} \left( b_1 \right)} $$
 
 follows the $t$ distribution with $n-k$ degrees of freedom.
 
