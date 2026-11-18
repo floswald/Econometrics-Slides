@@ -1,7 +1,7 @@
 ---
 title: "Econometrics"
 subtitle: "Differences-in-Differences"
-author: "Florian Oswald, Gustave Kenedi and Pierre Villedieu"
+author: "Florian Oswald, Gustave Kenedi<br> and Pierre Villedieu"
 date: "UniTo ESOMAS `r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -101,9 +101,6 @@ layout: true
 
 * In this lecture, we will cover a popular and rigorous program evaluation method: __differences-in-differences__.
 
---
-
-* Next week we will look at __regression discontinuity designs__.
 
 ---
 
@@ -1124,9 +1121,8 @@ background-position: 9% 19%
 
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| <a href="mailto:florian.oswald@sciencespo.fr">.ScPored[<i class="fa fa-paper-plane fa-fw"></i>]               | florian.oswald@sciencespo.fr       |
-| <a href="https://github.com/ScPoEcon/Econometrics-Slides">.ScPored[<i class="fa fa-link fa-fw"></i>] | Slides |
-| <a href="https://scpoecon.github.io/Econometrics">.ScPored[<i class="fa fa-link fa-fw"></i>] | Book |
-| <a href="http://twitter.com/ScPoEcon">.ScPored[<i class="fa fa-twitter fa-fw"></i>]                          | @ScPoEcon                         |
-| <a href="http://github.com/ScPoEcon">.ScPored[<i class="fa fa-github fa-fw"></i>]                          | @ScPoEcon                       |
+| <a href="mailto:florian.oswald@unito.it">.ScPored[<i class="fa fa-paper-plane fa-fw"></i>]               | florian.oswald@sciencespo.fr       |
+| <a href="https://github.com/floswald/Econometrics-Slides">.ScPored[<i class="fa fa-link fa-fw"></i>] | Slides |
+| <a href="https://floswald.github.io/Econometrics">.ScPored[<i class="fa fa-link fa-fw"></i>] | Book |
+
 
