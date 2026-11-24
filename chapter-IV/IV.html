@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald
 ]
 .date[
-### UniTo ESOMAS 2025-10-09
+### UniTo ESOMAS 2026-11-24
 ]
 
 ---
@@ -140,7 +140,7 @@ class: middle
 ]
 
 .pull-right[
-&lt;img src="../img/father-thames.jpg" style="display: block; margin: auto;" /&gt;
+&lt;img src="../img/father-thames.jpg" width="2667" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -215,7 +215,7 @@ background-size: 800px
 --
 
 .pull-right[
-&lt;img src="../img/snow-map.jpg" style="display: block; margin: auto;" /&gt;
+&lt;img src="../img/snow-map.jpg" width="1024" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -527,7 +527,13 @@ In this special case where all involved variables `\(c,w,z\)` are binary, the es
 
 ---
 
-**Summary**: IVs are a powerful tool to establish causality in contexts with observational data only and where we are concerned that the conditional mean assumption `\(E[u_i | x_i]=0\)` is violated, hence, we cannot say *all else equal, as `\(x\)` changes, `\(y\)` changes like this and that*. Then we say that `\(x\)` is *endogenous*. The key features of IV `\(z\)` are that 
+# Summary
+
+* IVs are a powerful tool to establish causality in contexts with observational data only
+* In such contexts, we might be concerned that the conditional mean assumption `\(E[u_i | x_i]=0\)` is violated
+* We cannot say *all else equal, as `\(x\)` changes, `\(y\)` changes like this and that*. Then we say that `\(x\)` is *endogenous*. 
+
+### Key Features of IV `\(z\)`:
 
 1. `\(z\)` is *relevant* for `\(x\)`. For example, in a simple regression of `\(z\)` on `\(x\)`, we want `\(z\)` to have considerable predictive power. We can *test* this condition in data.
 2. We need a theory according to which is *reasonable* to assume that `\(z\)` is *unrelated* to other unobservable factors that might impact the outcome. Hence, `\(z\)` is *exogenous* to `\(u\)`, or `\(E[u | z] = 0\)`. This is an **assumption** (i.e. we can not test this with data).
@@ -548,12 +554,7 @@ background-position: 9% 19%
 
 |                                                                                                            |                                   |
 | :--------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| &lt;a href="mailto:florian.oswald@sciencespo.fr"&gt;.ScPored[&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;]               | florian.oswald@sciencespo.fr       |
-| &lt;a href="https://github.com/ScPoEcon/Advanced-Metrics-slides"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Slides |
-| &lt;a href="https://scpoecon.github.io/Econometrics"&gt;.ScPored[&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;] | Book |
-| &lt;a href="http://twitter.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                         |
-| &lt;a href="http://github.com/ScPoEcon"&gt;.ScPored[&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;]                          | @ScPoEcon                       |
-
+| &lt;a href="mailto:florian.oswald@unito.it"&gt;.ScPored[&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;]               | florian.oswald@unito.it      |
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

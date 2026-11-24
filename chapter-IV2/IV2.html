@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Florian Oswald
 ]
 .date[
-### UniTo ESOMAS 2025-11-19
+### UniTo ESOMAS 2026-11-24
 ]
 
 ---
@@ -42,7 +42,7 @@ layout: true
 
 .pull-left[
 
-## What Did we on IV already?
+## What Did we Do on IV already?
 
 * We learned about John Snow's grand experiment in London 1850.
 
@@ -389,6 +389,7 @@ Let's load the data and look at a quick summary
 
 
 ``` r
+# devtools::install_github("jrnold/masteringmetrics", subdir = "masteringmetrics")
 data("ak91", package = "masteringmetrics")
 # from the modelsummary package
 datasummary_skim(data.frame(ak91),histogram = TRUE)
@@ -399,9 +400,9 @@ datasummary_skim(data.frame(ak91),histogram = TRUE)
 
     &lt;script&gt;
 
-      function styleCell_ynjgbqkjamgeebgl0llz(i, j, css_id) {
-          var table = document.getElementById("tinytable_ynjgbqkjamgeebgl0llz");
-          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+      function styleCell_gekjx1eqbw0on2khbovz(i, j, css_id) {
+          var table = document.getElementById("tinytable_gekjx1eqbw0on2khbovz");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
               cell.classList.add(css_id);
@@ -409,47 +410,55 @@ datasummary_skim(data.frame(ak91),histogram = TRUE)
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_ynjgbqkjamgeebgl0llz(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_ynjgbqkjamgeebgl0llz");
-        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-        if (!targetCell) {
-          console.warn(`Cell at (${i}, ${j}) not found.`);
-        }
-
-        // Get all cells that need to be removed
-        const cellsToRemove = [];
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_gekjx1eqbw0on2khbovz');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret &lt;br&gt;
+        newCell.innerHTML = content;
+      }
+      function spanCell_gekjx1eqbw0on2khbovz(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_gekjx1eqbw0on2khbovz");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
         for (let r = 0; r &lt; rowspan; r++) {
-          for (let c = 0; c &lt; colspan; c++) {
-            if (r === 0 &amp;&amp; c === 0) continue; // Skip the target cell
-            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
-            if (cell) {
-              cellsToRemove.push(cell);
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c &gt; 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r &gt; 0) {
+            for (let c = colspan - 1; c &gt;= 0; c--) {
+              if (table.rows[i + r] &amp;&amp; table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
             }
           }
         }
-
-        // Remove all cells
-        cellsToRemove.forEach(cell =&gt; cell.remove());
-
-        // Set rowspan and colspan of the target cell if it exists
-        if (targetCell) {
-          targetCell.rowSpan = rowspan;
-          targetCell.colSpan = colspan;
-        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
       }
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '6', j: 5 }, { i: '6', j: 7 }, { i: '6', j: 1 }, { i: '6', j: 3 }, { i: '6', j: 0 }, { i: '6', j: 2 }, { i: '6', j: 4 }, { i: '6', j: 6 }, { i: '6', j: 8 },  ], css_id: 'tinytable_css_63cvw9nbd0tix4vcqmjy',}, 
-          { positions: [ { i: '5', j: 0 }, { i: '5', j: 2 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '5', j: 3 }, { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '4', j: 2 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '3', j: 4 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '2', j: 6 }, { i: '2', j: 8 }, { i: '3', j: 8 }, { i: '4', j: 8 }, { i: '5', j: 8 }, { i: '1', j: 5 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '1', j: 6 }, { i: '1', j: 8 },  ], css_id: 'tinytable_css_jhu676gimczxdmp27dti',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '0', j: 2 }, { i: '0', j: 4 }, { i: '0', j: 6 }, { i: '0', j: 8 }, { i: '0', j: 5 }, { i: '0', j: 7 }, { i: '0', j: 1 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_xprpkgj23lzxdvtar2rx',}, 
+          { positions: [ { i: 6, j: 5 }, { i: 6, j: 7 }, { i: 6, j: 1 }, { i: 6, j: 3 }, { i: 6, j: 0 }, { i: 6, j: 2 }, { i: 6, j: 4 }, { i: 6, j: 6 }, { i: 6, j: 8 },  ], css_id: 'tinytable_css_99dwrcjar3mz1e6m5t3e',}, 
+          { positions: [ { i: 5, j: 0 }, { i: 5, j: 2 }, { i: 4, j: 1 }, { i: 5, j: 1 }, { i: 5, j: 3 }, { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 4, j: 2 }, { i: 4, j: 4 }, { i: 5, j: 4 }, { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 3, j: 3 }, { i: 4, j: 3 }, { i: 4, j: 5 }, { i: 5, j: 5 }, { i: 1, j: 2 }, { i: 2, j: 2 }, { i: 3, j: 2 }, { i: 3, j: 4 }, { i: 3, j: 6 }, { i: 4, j: 6 }, { i: 5, j: 6 }, { i: 1, j: 3 }, { i: 2, j: 3 }, { i: 2, j: 5 }, { i: 3, j: 5 }, { i: 3, j: 7 }, { i: 4, j: 7 }, { i: 5, j: 7 }, { i: 1, j: 4 }, { i: 2, j: 4 }, { i: 2, j: 6 }, { i: 2, j: 8 }, { i: 3, j: 8 }, { i: 4, j: 8 }, { i: 5, j: 8 }, { i: 1, j: 5 }, { i: 1, j: 7 }, { i: 2, j: 7 }, { i: 1, j: 6 }, { i: 1, j: 8 },  ], css_id: 'tinytable_css_zp43o9ob9e4uklkbr30i',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 2 }, { i: 0, j: 4 }, { i: 0, j: 6 }, { i: 0, j: 8 }, { i: 0, j: 5 }, { i: 0, j: 7 }, { i: 0, j: 1 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_or55n6tmu5nizx8ywfd8',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_ynjgbqkjamgeebgl0llz(cell.i, cell.j, group.css_id);
+                  styleCell_gekjx1eqbw0on2khbovz(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -457,93 +466,93 @@ datasummary_skim(data.frame(ak91),histogram = TRUE)
 
     &lt;style&gt;
       /* tinytable css entries after */
-      .table td.tinytable_css_63cvw9nbd0tix4vcqmjy, .table th.tinytable_css_63cvw9nbd0tix4vcqmjy { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_jhu676gimczxdmp27dti, .table th.tinytable_css_jhu676gimczxdmp27dti { text-align: left; }
-      .table td.tinytable_css_xprpkgj23lzxdvtar2rx, .table th.tinytable_css_xprpkgj23lzxdvtar2rx { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_99dwrcjar3mz1e6m5t3e, .table th.tinytable_css_99dwrcjar3mz1e6m5t3e { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_zp43o9ob9e4uklkbr30i, .table th.tinytable_css_zp43o9ob9e4uklkbr30i { text-align: left; }
+      .table td.tinytable_css_or55n6tmu5nizx8ywfd8, .table th.tinytable_css_or55n6tmu5nizx8ywfd8 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     &lt;/style&gt;
     &lt;div class="container"&gt;
-      &lt;table class="table table-borderless" id="tinytable_ynjgbqkjamgeebgl0llz" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'&gt;
+      &lt;table class="table table-borderless" id="tinytable_gekjx1eqbw0on2khbovz" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'&gt;
         &lt;thead&gt;
         
               &lt;tr&gt;
-                &lt;th scope="col" data-row="0" data-col="0"&gt; &lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="1"&gt;Unique&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="2"&gt;Missing Pct.&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="3"&gt;Mean&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="4"&gt;SD&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="5"&gt;Min&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="6"&gt;Median&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="7"&gt;Max&lt;/th&gt;
-                &lt;th scope="col" data-row="0" data-col="8"&gt;Histogram&lt;/th&gt;
+                &lt;th scope="col"&gt; &lt;/th&gt;
+                &lt;th scope="col"&gt;Unique&lt;/th&gt;
+                &lt;th scope="col"&gt;Missing Pct.&lt;/th&gt;
+                &lt;th scope="col"&gt;Mean&lt;/th&gt;
+                &lt;th scope="col"&gt;SD&lt;/th&gt;
+                &lt;th scope="col"&gt;Min&lt;/th&gt;
+                &lt;th scope="col"&gt;Median&lt;/th&gt;
+                &lt;th scope="col"&gt;Max&lt;/th&gt;
+                &lt;th scope="col"&gt;Histogram&lt;/th&gt;
               &lt;/tr&gt;
         &lt;/thead&gt;
         
         &lt;tbody&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="1" data-col="0"&gt;lnw&lt;/td&gt;
-                  &lt;td data-row="1" data-col="1"&gt;26732&lt;/td&gt;
-                  &lt;td data-row="1" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="1" data-col="3"&gt;5.9&lt;/td&gt;
-                  &lt;td data-row="1" data-col="4"&gt;0.7&lt;/td&gt;
-                  &lt;td data-row="1" data-col="5"&gt;-2.3&lt;/td&gt;
-                  &lt;td data-row="1" data-col="6"&gt;6.0&lt;/td&gt;
-                  &lt;td data-row="1" data-col="7"&gt;10.5&lt;/td&gt;
-                  &lt;td data-row="1" data-col="8"&gt;&lt;img src="./tinytable_assets/idnfnfm8iqrtow6ztc7tjx.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;lnw&lt;/td&gt;
+                  &lt;td&gt;26732&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;5.9&lt;/td&gt;
+                  &lt;td&gt;0.7&lt;/td&gt;
+                  &lt;td&gt;-2.3&lt;/td&gt;
+                  &lt;td&gt;6.0&lt;/td&gt;
+                  &lt;td&gt;10.5&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/id4j561dzdqlm2s9699vq9.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="2" data-col="0"&gt;s&lt;/td&gt;
-                  &lt;td data-row="2" data-col="1"&gt;21&lt;/td&gt;
-                  &lt;td data-row="2" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="2" data-col="3"&gt;12.8&lt;/td&gt;
-                  &lt;td data-row="2" data-col="4"&gt;3.3&lt;/td&gt;
-                  &lt;td data-row="2" data-col="5"&gt;0.0&lt;/td&gt;
-                  &lt;td data-row="2" data-col="6"&gt;12.0&lt;/td&gt;
-                  &lt;td data-row="2" data-col="7"&gt;20.0&lt;/td&gt;
-                  &lt;td data-row="2" data-col="8"&gt;&lt;img src="./tinytable_assets/idgtjj5tch8od1afl96qzo.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;s&lt;/td&gt;
+                  &lt;td&gt;21&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;12.8&lt;/td&gt;
+                  &lt;td&gt;3.3&lt;/td&gt;
+                  &lt;td&gt;0.0&lt;/td&gt;
+                  &lt;td&gt;12.0&lt;/td&gt;
+                  &lt;td&gt;20.0&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/idy8rhjrnyrpna4vyd42mt.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="3" data-col="0"&gt;yob&lt;/td&gt;
-                  &lt;td data-row="3" data-col="1"&gt;10&lt;/td&gt;
-                  &lt;td data-row="3" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="3" data-col="3"&gt;1934.6&lt;/td&gt;
-                  &lt;td data-row="3" data-col="4"&gt;2.9&lt;/td&gt;
-                  &lt;td data-row="3" data-col="5"&gt;1930.0&lt;/td&gt;
-                  &lt;td data-row="3" data-col="6"&gt;1935.0&lt;/td&gt;
-                  &lt;td data-row="3" data-col="7"&gt;1939.0&lt;/td&gt;
-                  &lt;td data-row="3" data-col="8"&gt;&lt;img src="./tinytable_assets/id9jpfx4eexagaodqmgsyy.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;yob&lt;/td&gt;
+                  &lt;td&gt;10&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;1934.6&lt;/td&gt;
+                  &lt;td&gt;2.9&lt;/td&gt;
+                  &lt;td&gt;1930.0&lt;/td&gt;
+                  &lt;td&gt;1935.0&lt;/td&gt;
+                  &lt;td&gt;1939.0&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/ideizrxnuuh4td6e55mwqn.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="4" data-col="0"&gt;qob&lt;/td&gt;
-                  &lt;td data-row="4" data-col="1"&gt;4&lt;/td&gt;
-                  &lt;td data-row="4" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="4" data-col="3"&gt;2.5&lt;/td&gt;
-                  &lt;td data-row="4" data-col="4"&gt;1.1&lt;/td&gt;
-                  &lt;td data-row="4" data-col="5"&gt;1.0&lt;/td&gt;
-                  &lt;td data-row="4" data-col="6"&gt;3.0&lt;/td&gt;
-                  &lt;td data-row="4" data-col="7"&gt;4.0&lt;/td&gt;
-                  &lt;td data-row="4" data-col="8"&gt;&lt;img src="./tinytable_assets/id3dryqj9j9oxsn6jqmic0.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;qob&lt;/td&gt;
+                  &lt;td&gt;4&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;2.5&lt;/td&gt;
+                  &lt;td&gt;1.1&lt;/td&gt;
+                  &lt;td&gt;1.0&lt;/td&gt;
+                  &lt;td&gt;3.0&lt;/td&gt;
+                  &lt;td&gt;4.0&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/idcbihnf27o7kxqp244c5y.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="5" data-col="0"&gt;sob&lt;/td&gt;
-                  &lt;td data-row="5" data-col="1"&gt;51&lt;/td&gt;
-                  &lt;td data-row="5" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="5" data-col="3"&gt;30.7&lt;/td&gt;
-                  &lt;td data-row="5" data-col="4"&gt;14.2&lt;/td&gt;
-                  &lt;td data-row="5" data-col="5"&gt;1.0&lt;/td&gt;
-                  &lt;td data-row="5" data-col="6"&gt;34.0&lt;/td&gt;
-                  &lt;td data-row="5" data-col="7"&gt;56.0&lt;/td&gt;
-                  &lt;td data-row="5" data-col="8"&gt;&lt;img src="./tinytable_assets/idtf2hdfcs3g56wvnpp8pd.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;sob&lt;/td&gt;
+                  &lt;td&gt;51&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;30.7&lt;/td&gt;
+                  &lt;td&gt;14.2&lt;/td&gt;
+                  &lt;td&gt;1.0&lt;/td&gt;
+                  &lt;td&gt;34.0&lt;/td&gt;
+                  &lt;td&gt;56.0&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/id7t7y335dulegdwuof1as.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                  &lt;td data-row="6" data-col="0"&gt;age&lt;/td&gt;
-                  &lt;td data-row="6" data-col="1"&gt;40&lt;/td&gt;
-                  &lt;td data-row="6" data-col="2"&gt;0&lt;/td&gt;
-                  &lt;td data-row="6" data-col="3"&gt;45.0&lt;/td&gt;
-                  &lt;td data-row="6" data-col="4"&gt;2.9&lt;/td&gt;
-                  &lt;td data-row="6" data-col="5"&gt;40.2&lt;/td&gt;
-                  &lt;td data-row="6" data-col="6"&gt;45.0&lt;/td&gt;
-                  &lt;td data-row="6" data-col="7"&gt;50.0&lt;/td&gt;
-                  &lt;td data-row="6" data-col="8"&gt;&lt;img src="./tinytable_assets/idksa7gg74mg6s1jqs933y.png" style="height: 1em;"&gt;&lt;/td&gt;
+                  &lt;td&gt;age&lt;/td&gt;
+                  &lt;td&gt;40&lt;/td&gt;
+                  &lt;td&gt;0&lt;/td&gt;
+                  &lt;td&gt;45.0&lt;/td&gt;
+                  &lt;td&gt;2.9&lt;/td&gt;
+                  &lt;td&gt;40.2&lt;/td&gt;
+                  &lt;td&gt;45.0&lt;/td&gt;
+                  &lt;td&gt;50.0&lt;/td&gt;
+                  &lt;td&gt;&lt;img src="./tinytable_assets/id5f1gox21476sjgqdjt9a.png" style="height: 1em;"&gt;&lt;/td&gt;
                 &lt;/tr&gt;
         &lt;/tbody&gt;
       &lt;/table&gt;
@@ -764,7 +773,9 @@ mod$`2SLS`  &lt;- iv_robust(lnw ~ s | q4,
 <tr>
 <td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">R2</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.117</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.117</td></tr>
 <tr>
-<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">RMSE</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.64</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">3.28</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.68</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.64</td></tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">RMSE</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.64</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">3.28</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.68</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">0.64</td></tr>
+<tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">1. Stage F:</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">48.9904279659094</td></tr>
 <tr>
 <td class="huxtable-cell" colspan="5" style="border-style: solid solid solid solid; border-width: 0.8pt 0pt 1pt 0pt;    padding: 3.5pt 6pt 3.5pt 6pt;">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
 </tbody>
@@ -848,7 +859,9 @@ mod[["2SLS_all"]] &lt;- estimatr::iv_robust(lnw ~ s  + yob_fct | qob_fct + yob_f
 <tr>
 <td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">R2</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.117</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.117</td></tr>
 <tr>
-<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">RMSE</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.64</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">3.28</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.68</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.64</td></tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">RMSE</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.64</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">3.28</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.68</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 4pt 6pt 4pt 6pt;">0.64</td></tr>
+<tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">1. Stage F:</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 4pt 6pt 4pt 6pt;">48.9904279659094</td></tr>
 <tr>
 <td class="huxtable-cell" colspan="5" style="border-style: solid solid solid solid; border-width: 0.8pt 0pt 1pt 0pt;    padding: 4pt 6pt 4pt 6pt;">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
 </tbody>
@@ -1207,7 +1220,9 @@ mods[["IV"]] &lt;- estimatr::iv_robust(log(bwght) ~  packs | cigprice, data = bw
 <tr>
 <td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 5pt 6pt 5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 5pt 6pt 5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 5pt 6pt 5pt 6pt;">(8.996)</td></tr>
 <tr>
-<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;">R2</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;">-23.230</td></tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 5pt 6pt 5pt 6pt;">R2</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 5pt 6pt 5pt 6pt;">0.000</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 5pt 6pt 5pt 6pt;">-23.230</td></tr>
+<tr>
+<td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;">1. Stage F:</td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;"></td><td class="huxtable-cell" style="border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 5pt 6pt 5pt 6pt;">0.120905223675029</td></tr>
 </tbody>
 </table>
 
@@ -1252,8 +1267,6 @@ background-size: 250px
 background-position: 9% 19%
 
 # END
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

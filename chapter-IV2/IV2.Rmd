@@ -489,6 +489,7 @@ layout: true
 Let's load the data and look at a quick summary
 
 ```{r ak-data}
+# devtools::install_github("jrnold/masteringmetrics", subdir = "masteringmetrics")
 data("ak91", package = "masteringmetrics")
 # from the modelsummary package
 datasummary_skim(data.frame(ak91),histogram = TRUE)

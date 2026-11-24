@@ -21,6 +21,10 @@ Modified by Florian Oswald for Unito
   color: white;
 }
 
+.separator h1, .separator h2, .separator h3, .separator p {
+  color: white;
+}
+
 pre {
     display: block;
     font-family: monospace;
